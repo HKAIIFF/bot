@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="AIF.WORLD City Guild Recruitment - Own the Compute Network of Your City.">
+    <title>AIF.WORLD | CITY GUILD RECRUITMENT</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        void: '#050505',
+                        surface: '#0a0a0a',
+                        panel: '#111111',
+                        signal: '#00ff41',
+                        alert: '#ff3333',
+                        warn: '#ffcc00',
+                        dim: '#4a4a4a',
+                        text: '#e5e5e5',
+                        accent: '#00f0ff'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                        display: ['Oswald', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #00ff41; }
+        
+        .text-glow { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
+        
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px; width: 20px;
+            background: #00ff41;
+            cursor: pointer;
+            margin-top: -8px;
+            border: 2px solid #000;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px;
+            cursor: pointer;
+            background: #333;
+        }
+        
+        .hud-border {
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 10, 10, 0.8);
+        }
+        .hud-border::before {
+            content: ''; position: absolute; top: -1px; left: -1px; width: 10px; height: 10px;
+            border-top: 2px solid #00ff41; border-left: 2px solid #00ff41;
+        }
+        .hud-border::after {
+            content: ''; position: absolute; bottom: -1px; right: -1px; width: 10px; height: 10px;
+            border-bottom: 2px solid #00ff41; border-right: 2px solid #00ff41;
+        }
+
+        .btn-cyber {
+            position: relative; overflow: hidden; transition: all 0.3s;
+        }
+        .btn-cyber:hover {
+            background: rgba(0, 255, 65, 0.1);
+            text-shadow: 0 0 8px #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+    </style>
+</head>
+<body class="font-mono antialiased relative">
+
+    <nav class="fixed top-0 w-full z-50 bg-void/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+                <div class="w-8 h-8 bg-dim group-hover:bg-signal text-black flex items-center justify-center font-bold text-lg transition-colors"><i class="fa-solid fa-arrow-left"></i></div>
+                <span class="font-display font-bold text-xl tracking-widest text-white">BACK_TO_HQ</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <span class="text-xs text-signal border border-signal/30 px-2 py-1">RECRUITMENT_STATUS: OPEN</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 grayscale mix-blend-screen"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-void via-void/80 to-void"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <div class="inline-block mb-4">
+                <div class="flex items-center gap-2 text-accent text-xs font-bold tracking-[0.2em] border border-accent/30 px-4 py-2 bg-accent/5 backdrop-blur">
+                    <i class="fa-solid fa-earth-asia"></i> GLOBAL_CITY_NODES
+                </div>
+            </div>
+            
+            <h1 class="font-display text-5xl md:text-8xl font-bold text-white mb-6 uppercase leading-tight">
+                Own Your <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-signal to-accent text-glow">City's Compute</span>
+            </h1>
+            
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+                成為 AIF 城市公會 (City Guild)。<br>
+                掌握區域運營權，獲取全城算力收益的 <span class="text-white font-bold border-b border-signal">3% 永久分成</span>。
+                這是 Web3 時代的數字基建特許經營權。
+            </p>
+
+            <div class="flex justify-center gap-4">
+                <a href="#calculator" class="btn-cyber px-8 py-4 bg-signal text-black font-bold font-display tracking-wider hover:bg-white transition-colors">
+                    CALCULATE ROI / 計算收益
+                </a>
+                <a href="#apply" class="px-8 py-4 border border-white/20 text-white font-mono text-sm hover:border-white transition-colors">
+                    READ REQUIREMENTS
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="border-y border-white/10 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+            <div class="py-6 text-center">
+                <div class="text-3xl font-display font-bold text-white mb-1">300</div>
+                <div class="text-xs text-dim tracking-widest uppercase">Target Cities</div>
+            </div>
+            <div class="py-6 text-center">
+                <div class="text-3xl font-display font-bold text-signal mb-1">3%</div>
+                <div class="text-xs text-dim tracking-widest uppercase">Service Fee</div>
+            </div>
+            <div class="py-6 text-center">
+                <div class="text-3xl font-display font-bold text-accent mb-1">Exclusive</div>
+                <div class="text-xs text-dim tracking-widest uppercase">Territory Rights</div>
+            </div>
+            <div class="py-6 text-center">
+                <div class="text-3xl font-display font-bold text-white mb-1">SaaS</div>
+                <div class="text-xs text-dim tracking-widest uppercase">Operation System</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="calculator" class="py-24 bg-void relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-grid-pattern opacity-20 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/3">
+                    <h2 class="font-display text-4xl font-bold text-white mb-6">REVENUE<br>SIMULATOR</h2>
+                    <p class="text-gray-400 mb-8 text-sm leading-relaxed">
+                        公會的收入主要來自區域內所有數字人節點的算力產出分成 (3%) 以及 B 端企業服務佣金。
+                        <br><br>
+                        使用此模擬器估算您所在城市的潛在收益。
+                    </p>
+                    <div class="p-4 border border-white/10 bg-white/5 rounded">
+                        <div class="text-xs text-accent mb-2">NOTE:</div>
+                        <p class="text-xs text-gray-500">
+                            *此模型基於假設數據，不構成投資承諾。<br>
+                            *標準節點假設為 RTX 3060 級別算力。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3">
+                    <div class="hud-border p-8">
+                        <div class="mb-8">
+                            <div class="flex justify-between mb-2">
+                                <label class="text-sm font-bold text-white">ACTIVE NODES (區域活躍節點數)</label>
+                                <span class="text-signal font-mono" id="val-nodes">5,000</span>
+                            </div>
+                            <input type="range" id="input-nodes" min="500" max="50000" step="500" value="5000">
+                            <div class="flex justify-between text-xs text-dim mt-2">
+                                <span>Small City</span>
+                                <span>Metropolis</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-12">
+                            <div class="flex justify-between mb-2">
+                                <label class="text-sm font-bold text-white">AIF TOKEN PRICE (預估幣價)</label>
+                                <span class="text-accent font-mono" id="val-price">$1.50</span>
+                            </div>
+                            <input type="range" id="input-price" min="0.5" max="10" step="0.1" value="1.5">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-white/10">
+                            <div>
+                                <div class="text-xs text-gray-400 mb-1">EST. MONTHLY REVENUE (USD)</div>
+                                <div class="text-3xl font-display font-bold text-white">$<span id="res-monthly">0</span></div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400 mb-1">EST. YEARLY REVENUE (USD)</div>
+                                <div class="text-4xl font-display font-bold text-signal">$<span id="res-yearly">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-surface border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-center font-display text-3xl font-bold text-white mb-16 uppercase">Guild Privileges / 公會權益</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-void p-8 border border-white/5 hover:border-signal/30 transition-colors group">
+                    <i class="fa-solid fa-chart-pie text-3xl text-signal mb-6 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">3% 永久分成</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        您所在轄區內所有數字人節點產生的算力收益，系統自動劃扣 3% 至公會錢包。躺賺模式的基石。
+                    </p>
+                </div>
+
+                <div class="bg-void p-8 border border-white/5 hover:border-accent/30 transition-colors group">
+                    <i class="fa-solid fa-briefcase text-3xl text-accent mb-6 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">B端業務獨家</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        擁有區域內影視公司、遊戲工作室的獨家對接權。B端企業充值算力，公會可獲額外返點。
+                    </p>
+                </div>
+
+                <div class="bg-void p-8 border border-white/5 hover:border-purple-500/30 transition-colors group">
+                    <i class="fa-solid fa-graduation-cap text-3xl text-purple-500 mb-6 group-hover:scale-110 transition-transform block"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">運營支持</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        獲得 AIF 總部提供的全套 SaaS 管理系統、營銷物料包、法律合規模板及線下活動預算支持。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="py-24 bg-void">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-3xl font-bold text-white mb-12 uppercase text-center">Application Process</h2>
+            
+            <div class="relative border-l border-white/10 ml-6 md:ml-0 md:pl-0 space-y-12">
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center">
+                    <div class="hidden md:block text-right">
+                        <div class="font-mono text-signal text-sm mb-1">STEP 01</div>
+                        <h3 class="font-bold text-xl text-white">提交申請</h3>
+                    </div>
+                    <div class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-2.5 h-2.5 bg-signal rounded-full shadow-[0_0_10px_#00ff41]"></div>
+                    
+                    <div class="md:hidden mb-2">
+                        <span class="text-signal text-xs font-mono">STEP 01</span>
+                        <h3 class="font-bold text-xl text-white">提交申請</h3>
+                    </div>
+                    
+                    <div class="text-gray-400 text-sm">
+                        填寫在線表格，提供團隊背景、公司資質及擬申請城市。需繳納 KYC 審核費。
+                    </div>
+                </div>
+
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center">
+                    <div class="hidden md:block text-right text-gray-400 text-sm">
+                        通過初審後，總部將安排視頻面試，核實您的本地資源與運營計劃。
+                    </div>
+                    <div class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-2.5 h-2.5 bg-gray-600 rounded-full"></div>
+                    
+                    <div class="md:col-start-2">
+                         <div class="md:hidden mb-2">
+                            <span class="text-dim text-xs font-mono">STEP 02</span>
+                            <h3 class="font-bold text-xl text-white">面試與盡調</h3>
+                        </div>
+                        <h3 class="hidden md:block font-bold text-xl text-white mb-2">面試與盡調</h3>
+                        <div class="md:hidden text-gray-400 text-sm">
+                            通過初審後，總部將安排視頻面試，核實您的本地資源與運營計劃。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-16 items-center">
+                    <div class="hidden md:block text-right">
+                        <div class="font-mono text-accent text-sm mb-1">STEP 03</div>
+                        <h3 class="font-bold text-xl text-white">簽約與激活</h3>
+                    </div>
+                    <div class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_10px_#00f0ff]"></div>
+                    
+                    <div class="md:hidden mb-2">
+                        <span class="text-accent text-xs font-mono">STEP 03</span>
+                        <h3 class="font-bold text-xl text-white">簽約與激活</h3>
+                    </div>
+                    
+                    <div class="text-gray-400 text-sm">
+                        簽署電子協議，支付公會激活費用（Token或USDT）。獲取 Guild Admin 權限。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center">
+                <div class="p-8 border border-dashed border-white/20 bg-surface/50 max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold text-white mb-4">Ready to build?</h3>
+                    <p class="text-gray-400 text-sm mb-6">我們正在全球 300 個核心城市尋找合作夥伴。名額有限，先到先得。</p>
+                    <a href="#" class="btn-cyber inline-block w-full md:w-auto px-12 py-4 bg-signal text-black font-bold tracking-widest uppercase hover:bg-white transition-colors">
+                        APPLY NOW / 立即申請
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/10 py-12 text-center">
+        <p class="text-xs text-dim font-mono">© 2026 AIF.WORLD. CITY GUILD PROGRAM.</p>
+    </footer>
+
+    <script>
+        // ROI Calculator Logic
+        const nodesInput = document.getElementById('input-nodes');
+        const priceInput = document.getElementById('input-price');
+        const nodesVal = document.getElementById('val-nodes');
+        const priceVal = document.getElementById('val-price');
+        const monthlyDisplay = document.getElementById('res-monthly');
+        const yearlyDisplay = document.getElementById('res-yearly');
+
+        // Assumptions based on Whitepaper
+        const AVG_YIELD_PER_NODE = 2.5; // AIF per day (Estimated for avg GPU)
+        const GUILD_COMMISSION = 0.03; // 3%
+
+        function calculate() {
+            const nodes = parseInt(nodesInput.value);
+            const price = parseFloat(priceInput.value);
+
+            // Update Labels
+            nodesVal.innerText = nodes.toLocaleString();
+            priceVal.innerText = '$' + price.toFixed(2);
+
+            // Calculation
+            const dailyRevenue = nodes * AVG_YIELD_PER_NODE * price * GUILD_COMMISSION;
+            const monthlyRevenue = dailyRevenue * 30;
+            const yearlyRevenue = dailyRevenue * 365;
+
+            // Animate Numbers
+            monthlyDisplay.innerText = Math.floor(monthlyRevenue).toLocaleString();
+            yearlyDisplay.innerText = Math.floor(yearlyRevenue).toLocaleString();
+        }
+
+        nodesInput.addEventListener('input', calculate);
+        priceInput.addEventListener('input', calculate);
+
+        // Init
+        calculate();
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.from(".hud-border", {
+            scrollTrigger: { trigger: "#calculator", start: "top 80%" },
+            y: 50, opacity: 0, duration: 1, ease: "power2.out"
+        });
+
+        gsap.utils.toArray('.group').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: "top 85%" },
+                y: 30, opacity: 0, duration: 0.6
+            });
+        });
+
+    </script>
+</body>
+</html>
