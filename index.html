@@ -121,7 +121,7 @@
             z-index: 10; pointer-events: none;
         }
 
-        /* TERMINAL / INTERACTIVE ELEMENTS (From world-ren) */
+        /* TERMINAL / INTERACTIVE ELEMENTS */
         .slot {
             width: 100%; height: 80px;
             border: 1px dashed #444;
@@ -456,7 +456,7 @@
 
                         <div class="panel-box p-6 flex-1 border-signal/50">
                             <h3 class="text-signal font-mono text-xs mb-2 animate-pulse">// YIELD STREAM</h3>
-                            <div class="text-4xl font-heavy text-white mb-1"><span id="yield-rate">0.0245</span> <span class="text-sm text-dim">AIF/s</span></div>
+                            <div class="text-4xl font-heavy text-white mb-1"><span id="yield-rate">0.0075</span> <span class="text-sm text-dim">AIF/s</span></div>
                             <div class="text-[10px] text-gray-500 font-mono">Real-time reward accumulation</div>
                         </div>
                     </div>
@@ -554,7 +554,7 @@
                             <div class="w-3 h-3 bg-signal rounded-full animate-pulse"></div>
                             <div>
                                 <div class="text-xs text-dim font-bold">STATUS: MINING</div>
-                                <div class="text-white font-mono text-sm">0.0452 AIF/hr</div>
+                                <div class="text-white font-mono text-sm">3.45 AIF/hr</div>
                             </div>
                         </div>
                     </div>
@@ -683,9 +683,9 @@
                         </div>
                     </div>
                     <div class="bg-panel border border-[#333] p-6 text-center relative">
-                        <div class="text-xs text-dim font-mono mb-2"><span class="en-text">ESTIMATED MONTHLY VALUE</span><span class="zh-text">預估月產出價值</span></div>
+                        <div class="text-xs text-dim font-mono mb-2"><span class="en-text">ESTIMATED MONTHLY OUTPUT</span><span class="zh-text">預估月產出數量</span></div>
                         <div class="text-4xl md:text-5xl font-heavy text-white mb-2 tracking-tight">
-                            $<span id="calc-min">45</span> - $<span id="calc-max">120</span> <span class="text-sm text-dim align-middle">USDT</span>
+                            <span id="calc-min">800</span> - <span id="calc-max">1200</span> <span class="text-sm text-dim align-middle">AIF</span>
                         </div>
                     </div>
                 </div>
@@ -780,16 +780,34 @@
     <script>
         const app = {
             lang: 'zh',
-            baseYield: 0.0245,
+            baseYield: 0.0075, // Corrected base yield for visual AIF/s logic
+            isInit: false,
             
             init() {
+                if (this.isInit) return;
+                this.isInit = true;
+
                 this.bootSequence();
                 this.calculate();
                 this.initTerminal();
+                
+                // Failsafe: Ensure boot screen is removed even if animation hangs
+                setTimeout(() => {
+                    const boot = document.getElementById('boot-screen');
+                    if (boot && boot.style.display !== 'none') {
+                        boot.style.display = 'none';
+                    }
+                }, 4000);
             },
 
             // Boot Animation
             bootSequence() {
+                // Check if GSAP is loaded
+                if (typeof gsap === 'undefined') {
+                    document.getElementById('boot-screen').style.display = 'none';
+                    return;
+                }
+
                 const tl = gsap.timeline();
                 tl.to("#loader-bar", {width: '100%', duration: 1.2, ease: "power2.inOut"})
                   .to("#boot-screen", {opacity: 0, duration: 0.5, delay: 0.2, onComplete: () => {
@@ -835,27 +853,33 @@
                 const hours = parseInt(document.getElementById('calc-hours').value);
                 
                 const weights = { 'D': 0.5, 'C': 1.2, 'B': 3.0, 'A': 8.0, 'S': 50.0 };
-                const baseRewardPerHour = 0.25; 
-                const networkLoadBonus = 1.25; 
+                
+                // NEW LOGIC: 
+                // Target: $500 investment (Tier B, Weight 3), 5.5 months ROI (~$90/mo).
+                // If 1 AIF ~= $0.10, need ~900 AIF/mo output for Tier B running 12hrs.
+                // Formula: 3.0 (Weight) * 12 (Hours) * X (Base) * 30 (Days) = 900
+                // X = ~0.85 - 0.95 AIF/Hour per Weight Unit.
+                
+                const baseRewardPerHour = 0.95; // AIF per hour per weight unit
                 
                 const weight = weights[tierValue];
                 const dailyBase = weight * hours * baseRewardPerHour;
-                const minMonthly = Math.floor(dailyBase * 30 * 0.8);
-                const maxMonthly = Math.floor(dailyBase * 30 * networkLoadBonus * 1.5);
+                const minMonthly = Math.floor(dailyBase * 30 * 0.9);
+                const maxMonthly = Math.floor(dailyBase * 30 * 1.1);
 
                 document.getElementById('calc-min').innerText = minMonthly.toLocaleString();
                 document.getElementById('calc-max').innerText = maxMonthly.toLocaleString();
             },
 
-            // --- TERMINAL & DRAG DROP LOGIC (From world-ren.html) ---
+            // --- TERMINAL & DRAG DROP LOGIC ---
             initTerminal() {
-                // Initial log
                 setTimeout(() => this.log("> Hardware Sync: COMPLETE"), 1000);
                 setTimeout(() => this.log("> Yield Optimization: ACTIVE"), 2000);
             },
 
             log(text) {
                 const consoleEl = document.getElementById('terminal-log');
+                if(!consoleEl) return;
                 const div = document.createElement('div');
                 div.innerHTML = text;
                 div.className = "text-signal";
@@ -888,7 +912,8 @@
                 ev.target.innerHTML = `<span class="text-black">${name.toUpperCase()}</span>`;
 
                 // Yield Update
-                this.baseYield += 0.15; // Boost
+                // Boost is now proportionally smaller relative to baseYield to keep realistic numbers
+                this.baseYield += 0.0015; 
                 this.updateYield();
 
                 this.log(`> SKILL MOUNTED: ${name}`);
@@ -917,7 +942,18 @@
             }
         };
 
-        window.onload = () => app.init();
+        // Optimized Initialization Logic
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => app.init());
+        } else {
+            app.init();
+        }
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.getElementById('boot-screen').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
