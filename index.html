@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="AIF.BOT - Global Digital Human Compute Network.">
-    <title>AIF.BOT | INTEGRATED PROTOCOL</title>
+    <meta name="description" content="AIF.BOT - 全球數字人算力網絡 | Global Digital Human Compute Network">
+    <meta name="keywords" content="AI算力, DePIN, 數字人, HKAIIFF, 邊緣計算, 區塊鏈, Solana">
+    <title>AIF.BOT | GLOBAL COMPUTE NETWORK PROTOCOL V5.0</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
             theme: {
                 extend: {
                     colors: {
-                        void: '#030303',
+                        void: '#020202',
                         panel: '#0a0a0a',
                         border: '#2a2a2a',
                         signal: '#CCFF00', 
@@ -27,7 +28,8 @@
                         danger: '#FF3333',
                         accent: '#00F0FF',
                         dim: '#666',
-                        purple: '#9D00FF'
+                        purple: '#9D00FF',
+                        gold: '#FFD700'
                     },
                     fontFamily: {
                         heavy: ['"Oswald"', 'sans-serif'],
@@ -35,15 +37,15 @@
                         zh: ['"Noto Sans TC"', 'sans-serif']
                     },
                     backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
-                        'holograph': "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)",
-                        'hex-grid': "url('data:image/svg+xml,%3Csvg width=\"24\" height=\"40\" viewBox=\"0 0 24 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 40c5.514 0 10-4.486 10-10V10C10 4.486 5.514 0 0 0h24c-5.514 0-10 4.486-10 10v20c0 5.514 5.514 10 10 10H0z\" fill=\"%23111\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+                        'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)",
+                        'scanlines': "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2))",
+                        'tech-overlay': "radial-gradient(circle at 50% 50%, transparent 0%, #020202 100%)"
                     },
                     animation: {
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'glitch': 'glitch 2s infinite linear alternate-reverse',
-                        'scan-vertical': 'scanVertical 3s linear infinite',
-                        'scan': 'scan 4s linear infinite',
+                        'scan': 'scan 3s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         glitch: {
@@ -51,14 +53,13 @@
                             '50%': { clip: 'rect(45px, 9999px, 80px, 0)' },
                             '100%': { clip: 'rect(24px, 9999px, 12px, 0)' },
                         },
-                        scanVertical: {
-                            '0%': { top: '0%' },
-                            '50%': { top: '100%' },
-                            '100%': { top: '0%' }
-                        },
                         scan: {
-                            '0%': { backgroundPosition: '0 0' },
-                            '100%': { backgroundPosition: '0 200%' }
+                            '0%': { top: '0%' },
+                            '100%': { top: '100%' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
                         }
                     }
                 }
@@ -67,103 +68,85 @@
     </script>
 
     <style>
-        body { background-color: #030303; color: #EAEAEA; font-family: 'Space Mono', 'Noto Sans TC', monospace; overflow-x: hidden; }
+        body { background-color: #020202; color: #EAEAEA; font-family: 'Space Mono', 'Noto Sans TC', monospace; overflow-x: hidden; }
         ::selection { background: #CCFF00; color: #000; }
         
-        /* LANGUAGE SYSTEM */
+        /* Language System */
         body.lang-en .zh-text { display: none !important; }
         body.lang-en .en-text { display: inline !important; }
         body.lang-zh .en-text { display: none !important; }
         body.lang-zh .zh-text { display: inline !important; }
 
-        /* UI ELEMENTS */
+        /* UI Components */
         .brutal-btn {
             background: #CCFF00; color: #000; font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;
             padding: 0.75rem 1.5rem; clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
-            transition: all 0.2s; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-            border: none;
+            transition: all 0.2s; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: none;
         }
         .brutal-btn:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 rgba(204, 255, 0, 0.3); }
         .brutal-btn.outline { background: transparent; border: 1px solid #CCFF00; color: #CCFF00; }
         .brutal-btn.outline:hover { background: rgba(204, 255, 0, 0.1); }
+        .brutal-btn.purple { background: #9D00FF; color: white; border: 1px solid #9D00FF; }
+        .brutal-btn.purple:hover { box-shadow: 4px 4px 0 rgba(157, 0, 255, 0.3); }
 
         .panel-box { border: 1px solid #2a2a2a; background: #0a0a0a; transition: border-color 0.3s; position: relative; overflow: hidden; }
-        .panel-box:hover { border-color: #CCFF00; }
-        .panel-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #2a2a2a; transition: background 0.3s; }
-        .panel-box:hover::before { background: #CCFF00; }
-
-        .nav-link { font-family: 'Oswald'; font-size: 14px; color: #666; text-transform: uppercase; transition: color 0.3s; cursor: pointer; position: relative; }
-        .nav-link::after { content:''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: #CCFF00; transition: width 0.3s; }
-        .nav-link:hover { color: #CCFF00; }
-        .nav-link:hover::after { width: 100%; }
-
-        /* TABLE STYLES */
-        .tech-table { width: 100%; border-collapse: separate; border-spacing: 0; font-family: 'Space Mono', monospace; font-size: 0.85rem; }
-        .tech-table th { text-align: left; padding: 1rem; border-bottom: 2px solid #CCFF00; color: #CCFF00; text-transform: uppercase; background: rgba(204,255,0,0.05); }
-        .tech-table td { padding: 1rem; border-bottom: 1px solid #333; color: #ccc; vertical-align: top; }
-        .tech-table tr:hover td { background: rgba(255,255,255,0.03); color: white; }
-
-        /* ID CARD STYLES */
-        .id-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        .id-card:hover { transform: scale(1.02); border-color: #CCFF00; }
-        .scan-line {
-            position: absolute; width: 100%; height: 2px; background: #CCFF00;
-            box-shadow: 0 0 10px #CCFF00; opacity: 0.5;
-            animation: scanVertical 3s linear infinite;
-            z-index: 10; pointer-events: none;
-        }
-
-        /* TERMINAL / INTERACTIVE ELEMENTS */
-        .slot {
-            width: 100%; height: 80px;
-            border: 1px dashed #444;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; color: #666;
-            transition: all 0.3s;
-            background: rgba(0,0,0,0.3);
-        }
-        .slot.active { border-color: #CCFF00; box-shadow: inset 0 0 10px rgba(204,255,0,0.2); }
-        .item-card {
-            cursor: grab;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .item-card:active { cursor: grabbing; transform: scale(0.95); }
-        .item-card:hover { border-color: #fff; }
-
-        /* CRT EFFECTS */
-        .crt-overlay {
-            position: fixed; inset: 0; pointer-events: none; z-index: 9998;
-            background-size: 100% 4px; opacity: 0.1;
-            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
-        }
+        .panel-box:hover { border-color: #444; }
+        
         .glitch-text { position: relative; }
         .glitch-text::before { content: attr(data-text); position: absolute; left: 2px; text-shadow: -1px 0 #CCFF00; top: 0; clip: rect(44px, 450px, 56px, 0); animation: glitch 3s infinite linear alternate-reverse; opacity: 0.7; }
+
+        /* CRT Overlay */
+        .crt-overlay {
+            position: fixed; inset: 0; pointer-events: none; z-index: 9998;
+            background-size: 100% 4px; background-image: var(--scanlines); opacity: 0.15;
+        }
+
+        /* Neural Link / Simulation Interface */
+        .sim-modal {
+            position: fixed; inset: 0; z-index: 9999; background: #050505;
+            transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+            display: flex; flex-direction: column;
+        }
+        .sim-modal.active { transform: translateY(0); }
+        
+        .hologram-figure { filter: drop-shadow(0 0 5px rgba(204, 255, 0, 0.3)); transition: 0.5s; opacity: 0.3; filter: grayscale(100%) blur(2px); transform: scale(0.9); }
+        .hologram-figure.active { opacity: 1; filter: grayscale(0%) blur(0px) drop-shadow(0 0 20px rgba(204, 255, 0, 0.6)); transform: scale(1); }
+
+        /* Step Lines */
+        .step-line { position: absolute; left: 23px; top: 0; bottom: 0; width: 2px; background: #222; z-index: 0; }
+        .step-item:last-child .step-line { display: none; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
+
+        .copy-toast {
+            position: fixed; bottom: 30px; right: 30px; background: #CCFF00; color: black; 
+            padding: 10px 20px; font-weight: bold; transform: translateY(100px); 
+            transition: transform 0.3s; z-index: 10002; font-family: 'Oswald'; text-transform: uppercase;
+        }
+        .copy-toast.show { transform: translateY(0); }
     </style>
 </head>
 <body class="bg-void bg-grid-pattern lang-zh">
 
     <div class="crt-overlay"></div>
+    <div id="copy-toast" class="copy-toast">ADDRESS COPIED / 地址已複製</div>
 
-    <div id="boot-screen" class="fixed inset-0 z-[9999] bg-void flex flex-col items-center justify-center font-mono">
+    <div id="boot-screen" class="fixed inset-0 z-[10000] bg-void flex flex-col items-center justify-center font-mono">
         <div class="w-[300px] text-xs text-dim mb-4 px-4 space-y-1">
-            <div>> SYSTEM CHECK... OK</div>
-            <div>> LOADING PROTOCOLS... OK</div>
-            <div>> INTEGRATING MODULES... OK</div>
-            <div class="text-signal">> CONNECTING TO SOLANA MAINNET...</div>
+            <div>> SYSTEM CHECK... <span class="text-signal">OK</span></div>
+            <div>> LOADING WHITEPAPER V5.0... <span class="text-signal">OK</span></div>
+            <div>> CONNECTING TO SOLANA... <span class="text-signal">OK</span></div>
+            <div>> INITIALIZING NEURAL LINK...</div>
         </div>
         <div class="text-6xl font-heavy text-white mb-2 tracking-tighter glitch-text" data-text="AIF.BOT">AIF.BOT</div>
         <div class="w-64 h-1 bg-[#222] overflow-hidden relative"><div id="loader-bar" class="h-full bg-signal w-0 absolute top-0 left-0"></div></div>
     </div>
 
-    <nav class="fixed w-full z-50 top-0 left-0 border-b border-[#333] bg-void/90 backdrop-blur-md">
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-[#333] bg-void/95 backdrop-blur-md">
         <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <div class="font-heavy text-3xl tracking-tighter text-white">AIF<span class="text-signal">.BOT</span></div>
@@ -174,786 +157,831 @@
                 </div>
             </div>
             
-            <div class="hidden xl:flex items-center gap-6 text-[12px]">
-                <a href="#vision" class="nav-link"><span class="en-text">VISION</span><span class="zh-text">願景</span></a>
-                <a href="#philosophy" class="nav-link text-white"><span class="en-text">LOGIC</span><span class="zh-text">底層邏輯</span></a>
-                <a href="#identity" class="nav-link text-signal"><span class="en-text">IDENTITY</span><span class="zh-text">數字身份</span></a>
-                <a href="#neural-terminal" class="nav-link text-accent border border-accent/50 px-2 py-1"><i class="fa-solid fa-terminal mr-1"></i> <span class="en-text">LIVE DEMO</span><span class="zh-text">節點預覽</span></a>
-                <a href="#network" class="nav-link"><span class="en-text">NETWORK</span><span class="zh-text">架構</span></a>
-                <a href="#evolution" class="nav-link"><span class="en-text">EVOLUTION</span><span class="zh-text">成長</span></a>
-                <a href="#activate" class="brutal-btn text-xs h-8 px-4 py-0"><span class="en-text">ACTIVATE NODE</span><span class="zh-text">激活節點</span></a>
+            <div class="hidden xl:flex items-center gap-8 text-[12px] font-heavy tracking-wide text-dim">
+                <a onclick="app.scrollTo('#identity')" class="hover:text-white cursor-pointer transition-colors"><span class="zh-text">數字公民身份</span><span class="en-text">IDENTITY</span></a>
+                <a onclick="app.scrollTo('#journey')" class="hover:text-white cursor-pointer transition-colors"><span class="zh-text">激活旅程</span><span class="en-text">JOURNEY</span></a>
+                <a onclick="app.scrollTo('#ecosystem')" class="hover:text-white cursor-pointer transition-colors"><span class="zh-text">生態架構</span><span class="en-text">ECOSYSTEM</span></a>
+                <a onclick="app.scrollTo('#guild')" class="hover:text-purple text-purple cursor-pointer transition-colors border-b border-purple"><span class="zh-text">城市公會</span><span class="en-text">GUILD</span></a>
+                <a onclick="app.openSimulation()" class="text-accent border border-accent/30 px-3 py-1 bg-accent/5 hover:bg-accent/10 cursor-pointer"><i class="fa-solid fa-terminal mr-2"></i><span class="zh-text">節點運行預覽</span><span class="en-text">SIMULATION</span></a>
             </div>
 
             <div class="flex items-center gap-3">
-                <button onclick="app.toggleLang()" class="h-10 px-4 border border-[#333] hover:border-white text-xs font-mono text-dim hover:text-white transition-colors bg-black/50">
+                <button onclick="app.toggleLang()" class="h-8 px-3 border border-[#333] hover:border-white text-[10px] font-mono text-dim hover:text-white transition-colors bg-black/50">
                     <span class="en-text">EN / 繁中</span><span class="zh-text">繁中 / EN</span>
                 </button>
+                <a onclick="app.scrollTo('#activate')" class="brutal-btn text-xs h-8 px-4 py-0 hidden md:flex"><span class="zh-text">激活節點</span><span class="en-text">ACTIVATE</span></a>
                 <button class="xl:hidden text-white text-xl ml-2" onclick="app.toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
             </div>
-        </div>
-        
-        <div id="mobile-menu" class="hidden xl:hidden absolute top-20 left-0 w-full bg-panel border-b border-[#333] p-6 flex-col gap-4 shadow-2xl">
-            <a href="#vision" class="nav-link block py-2" onclick="app.toggleMobileMenu()"><span class="en-text">VISION</span><span class="zh-text">願景</span></a>
-            <a href="#philosophy" class="nav-link block py-2" onclick="app.toggleMobileMenu()"><span class="en-text">LOGIC</span><span class="zh-text">底層邏輯</span></a>
-            <a href="#identity" class="nav-link block py-2" onclick="app.toggleMobileMenu()"><span class="en-text">IDENTITY</span><span class="zh-text">數字身份</span></a>
-            <a href="#neural-terminal" class="nav-link block py-2 text-accent" onclick="app.toggleMobileMenu()"><span class="en-text">LIVE DEMO</span><span class="zh-text">節點預覽</span></a>
-            <a href="#network" class="nav-link block py-2" onclick="app.toggleMobileMenu()"><span class="en-text">NETWORK</span><span class="zh-text">網絡架構</span></a>
-            <a href="#activate" class="brutal-btn w-full mt-4" onclick="app.toggleMobileMenu()"><span class="en-text">ACTIVATE NODE</span><span class="zh-text">激活節點</span></a>
         </div>
     </nav>
 
     <main class="relative z-10 pt-20">
 
         <section class="min-h-[90vh] flex items-center relative border-b border-[#333] overflow-hidden">
-            <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-screen"></div>
+            <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2560&auto=format&fit=crop')] bg-cover bg-center opacity-20 grayscale mix-blend-screen"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent z-0"></div>
             
-            <div class="max-w-[1600px] mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="max-w-[1600px] mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="flex flex-col justify-center">
                     <div class="inline-flex items-center gap-2 border border-signal text-signal px-3 py-1 mb-8 bg-signalDim w-fit backdrop-blur-sm">
                         <span class="w-2 h-2 rounded-full bg-signal animate-pulse-fast"></span>
-                        <span class="text-xs font-mono font-bold uppercase tracking-widest"><span class="en-text">NETWORK STATUS: LIVE</span><span class="zh-text">網絡狀態：已上線</span></span>
+                        <span class="text-xs font-mono font-bold uppercase tracking-widest"><span class="en-text">WHITEPAPER V5.0 LIVE</span><span class="zh-text">白皮書 V5.0 正式發布</span></span>
                     </div>
                     
-                    <h1 class="text-5xl md:text-7xl xl:text-8xl font-heavy tracking-tighter leading-[0.9] mb-8 text-white glitch-text" data-text="DIGITAL HUMAN">
-                        <span class="en-text">DIGITAL HUMAN<br>COMPUTE NODE</span>
-                        <span class="zh-text">數字人<br>算力節點</span>
+                    <h1 class="text-5xl md:text-7xl xl:text-8xl font-heavy tracking-tighter leading-[0.9] mb-8 text-white glitch-text" data-text="VALUE NODE">
+                        <span class="en-text">EVERY DEVICE,<br>A VALUE NODE.</span>
+                        <span class="zh-text">讓每一部設備<br>成為價值節點</span>
                     </h1>
                     
                     <p class="text-lg text-gray-400 font-mono mb-10 max-w-xl leading-relaxed border-l-4 border-signal pl-6">
                         <span class="en-text">
-                            Transform your idle device into an evolving AI value node.
-                            Zero-operations. Auto-mining. Growth-based assets.
+                            AIF.BOT is the world's first compute network powered by "Digital Humans". Transform your idle phone or PC into an evolving AI asset. Zero operations. Real yield (AIF).
                         </span>
                         <span class="zh-text">
-                            將您的閒置設備轉化為可進化的 AI 價值節點。
-                            零操作、自動挖礦、成長型資產。
+                            全球首個以「數字人」為載體的去中心化算力網絡。將您的手機或電腦轉化為可進化的 AI 數字資產。零操作門檻，對接真實 AI 影視渲染需求。
                         </span>
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="app.scrollTo('#activate')" class="brutal-btn text-lg">
-                            <span class="en-text">DEPLOY NODE ($500)</span><span class="zh-text">部署節點 ($500)</span>
+                        <button onclick="app.openSimulation()" class="brutal-btn text-lg group">
+                            <i class="fa-solid fa-play mr-2 group-hover:animate-pulse"></i>
+                            <span class="en-text">LAUNCH SIMULATION</span><span class="zh-text">啟動節點模擬</span>
                         </button>
-                        <button onclick="app.scrollTo('#identity')" class="brutal-btn outline text-lg">
-                            <span class="en-text">MINT IDENTITY</span><span class="zh-text">鑄造數字身份</span>
+                        <button onclick="app.scrollTo('#activate')" class="brutal-btn outline text-lg">
+                            <i class="fa-solid fa-bolt mr-2"></i>
+                            <span class="en-text">GET LICENSE</span><span class="zh-text">獲取激活授權</span>
                         </button>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center gap-8 text-xs font-mono text-dim">
+                        <div><span class="block text-white text-lg font-bold">1,449</span><span class="en-text">GLOBAL GUILDS</span><span class="zh-text">全球公會配額</span></div>
+                        <div class="h-8 w-[1px] bg-[#333]"></div>
+                        <div><span class="block text-white text-lg font-bold">5M+</span><span class="en-text">NODE TARGET</span><span class="zh-text">目標節點數</span></div>
+                        <div class="h-8 w-[1px] bg-[#333]"></div>
+                        <div><span class="block text-signal text-lg font-bold">HKAIIFF</span><span class="en-text">OFFICIAL PARTNER</span><span class="zh-text">官方合作夥伴</span></div>
                     </div>
                 </div>
 
                 <div class="hidden lg:flex items-center justify-center relative">
-                    <div class="w-full border-2 border-[#333] bg-black/90 p-1 relative shadow-[0_0_30px_rgba(0,255,0,0.1)]">
-                        <div class="bg-[#111] p-2 flex justify-between items-center border-b border-[#333]">
-                            <div class="flex gap-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div class="w-[500px] h-[500px] relative">
+                        <div class="absolute inset-0 border border-[#333] rounded-full animate-spin-slow opacity-30"></div>
+                        <div class="absolute inset-10 border border-dashed border-signal rounded-full animate-spin-slow opacity-20" style="animation-direction: reverse; animation-duration: 10s;"></div>
+                        <div class="absolute inset-0 flex items-center justify-center animate-float">
+                            <div class="bg-black/80 backdrop-blur-md border border-signal p-6 rounded-lg shadow-[0_0_50px_rgba(204,255,0,0.2)] max-w-sm">
+                                <div class="flex justify-between items-center mb-4 border-b border-[#333] pb-2">
+                                    <span class="text-signal font-mono text-xs">● REAL-TIME DEMAND</span>
+                                    <span class="text-dim text-[10px]">SRC: HKAIIFF 2026</span>
+                                </div>
+                                <div class="space-y-3 font-mono text-xs">
+                                    <div class="flex justify-between">
+                                        <span class="text-white">Render Job #9921</span>
+                                        <span class="text-accent">PROCESSING</span>
+                                    </div>
+                                    <div class="w-full bg-[#222] h-1.5"><div class="bg-accent w-[72%] h-full animate-pulse"></div></div>
+                                    <div class="flex justify-between text-dim text-[10px]">
+                                        <span>Req: RTX 4090 (Tier A)</span>
+                                        <span>Reward: 120 AIF</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="font-mono text-[10px] text-dim">root@aif-node:~</div>
                         </div>
-                        <div class="p-6 font-mono text-xs text-signal space-y-2 h-[400px] overflow-y-auto" id="terminal-content">
-                            <div class="text-white">Welcome to AIF.BOT Compute Network v4.0.0</div>
-                            <div>> Initializing hardware scan...</div>
-                            <div class="text-dim">  [CPU] Apple M3 Max detected</div>
-                            <div class="text-dim">  [GPU] 40-Core GPU detected</div>
-                            <div>> Assigning Node Tier: <span class="text-accent font-bold">TIER A (WORKSTATION)</span></div>
-                            <br>
-                            <div>> Network Hierarchy Check:</div>
-                            <div class="text-dim">  [Guild] HK-Central-01 (Active)</div>
-                            <div class="text-white">  [Self] Digital Human DH-99210</div>
-                            <br>
-                            <div>> Connecting to Task Dispatcher... <span class="text-white">CONNECTED</span></div>
-                            <div class="animate-pulse">> WAITING FOR TASKS...</div>
-                            <br>
-                            <div>[11:42:01] Task Received: Image Gen (SDXL)</div>
-                            <div>[11:42:05] Processing... <div class="w-32 h-2 bg-[#333] inline-block ml-2 align-middle"><div class="h-full bg-signal w-[45%]"></div></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="vision" class="py-24 bg-panel border-b border-[#333]">
-            <div class="max-w-[1400px] mx-auto px-6">
-                <div class="text-center mb-16">
-                    <span class="text-signal font-mono text-xs uppercase tracking-widest block mb-4">// BACKGROUND</span>
-                    <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
-                        <span class="en-text">THE COMPUTE CRISIS</span>
-                        <span class="zh-text">算力危機與解決方案</span>
-                    </h2>
-                    <p class="text-dim max-w-3xl mx-auto font-mono text-sm leading-relaxed">
-                        <span class="en-text">
-                            AI demand doubles every 3.4 months. AIF.BOT breaks this bottleneck by aggregating billions of idle consumer devices into a unified, decentralized supercomputer.
-                        </span>
-                        <span class="zh-text">
-                            AI 算力需求每 3.4 個月翻倍。AIF.BOT 通過聚合全球數十億閒置消費級設備，構建統一的去中心化超級計算機，打破中心化壟斷與高昂成本的瓶頸。
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="philosophy" class="py-24 bg-void border-b border-[#333] relative overflow-hidden">
-            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-            <div class="max-w-[1600px] mx-auto px-6 relative z-10">
-                <div class="mb-16">
-                    <span class="text-accent font-mono text-xs uppercase tracking-widest block mb-4">// REVOLUTION</span>
-                    <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
-                        <span class="en-text">ORGANIC COMPUTE & CORE LOGIC</span>
-                        <span class="zh-text">背景與底層邏輯</span>
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
-                    <div>
-                        <h3 class="text-2xl font-heavy text-white mb-6"><span class="en-text">ORGANIC AGENT NETWORK</span><span class="zh-text">有機的智能體網絡</span></h3>
-                        <p class="text-dim font-mono text-sm leading-relaxed mb-6">
-                            <span class="en-text">We believe future compute networks must be organic. Traditional DePIN treats nodes as servers; AIF treats them as CITIZENS.</span>
-                            <span class="zh-text">我們認為未來的算力網絡必須是有機的、基於智能體的。傳統 DePIN 將節點視為冷冰冰的服務器；AIF 將其視為「公民」。</span>
-                        </p>
-                        <p class="text-dim font-mono text-sm leading-relaxed">
-                            <span class="en-text">By mapping physical hardware to virtual "Exoskeletons", we gamify the contribution process. This ensures high retention and continuous hardware upgrades.</span>
-                            <span class="zh-text">通過將物理硬件映射為虛擬「外骨骼」，我們將貢獻過程遊戲化。這確保了用戶的高留存率和持續的硬件升級動力。</span>
-                        </p>
-                    </div>
-                    <div class="bg-panel border border-[#333] p-8 flex flex-col justify-center">
-                        <div class="flex items-center gap-4 mb-4">
-                            <i class="fa-solid fa-microchip text-4xl text-dim"></i>
-                            <i class="fa-solid fa-arrow-right text-dim"></i>
-                            <i class="fa-solid fa-user-astronaut text-4xl text-accent"></i>
-                        </div>
-                        <div class="text-white font-heavy text-xl mb-2"><span class="en-text">FROM RIG TO WORKFORCE</span><span class="zh-text">從礦機到數字勞動力</span></div>
-                        <div class="text-xs text-dim font-mono"><span class="en-text">The only platform where your node evolves, learns skills, and earns a salary.</span><span class="zh-text">全球唯一一個你的節點可以像人一樣進化、學習技能並賺取「工資」的平台。</span></div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-panel border border-[#333] p-8 hover:border-signal transition-colors group">
-                        <div class="text-signal text-xs font-mono mb-4 uppercase">Value 01</div>
-                        <h4 class="text-xl font-heavy text-white mb-4"><span class="en-text">SOLVING "COMPUTE TIDES"</span><span class="zh-text">解決「算力潮汐」</span></h4>
-                        <p class="text-sm text-dim font-mono">
-                            <span class="en-text">Flexible scheduling of idle consumer GPUs reduces AI rendering costs by 70%.</span>
-                            <span class="zh-text">靈活調度閒置 C 端顯卡，削峰填谷，將 AI 渲染成本降低 70%。</span>
-                        </p>
-                    </div>
-                    <div class="bg-panel border border-[#333] p-8 hover:border-accent transition-colors group">
-                        <div class="text-accent text-xs font-mono mb-4 uppercase">Value 02</div>
-                        <h4 class="text-xl font-heavy text-white mb-4"><span class="en-text">REAL CONSUMPTION</span><span class="zh-text">真實消耗</span></h4>
-                        <p class="text-sm text-dim font-mono">
-                            <span class="en-text">Burn tokens to buy "Skill Packs", creating a healthy internal economic loop.</span>
-                            <span class="zh-text">購買「技能包」銷毀代幣，創造健康的經濟內循環。</span>
-                        </p>
-                    </div>
-                    <div class="bg-panel border border-[#333] p-8 hover:border-purple transition-colors group">
-                        <div class="text-purple text-xs font-mono mb-4 uppercase">Value 03</div>
-                        <h4 class="text-xl font-heavy text-white mb-4"><span class="en-text">MASS ADOPTION</span><span class="zh-text">大規模採用</span></h4>
-                        <p class="text-sm text-dim font-mono">
-                            <span class="en-text">"Digital Brokerage" narrative is easier to understand than "Running a Node".</span>
-                            <span class="zh-text">「數字經紀」的敘事比「運行節點」更容易被大眾理解。</span>
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="identity" class="py-24 bg-panel border-b border-[#333]">
-            <div class="max-w-[1200px] mx-auto px-6">
-                <div class="text-center mb-16">
-                    <span class="text-accent font-mono text-xs uppercase tracking-widest block mb-4">// CITIZENSHIP</span>
+            <div class="max-w-[1400px] mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <span class="text-signal font-mono text-xs uppercase tracking-widest block mb-4">// IDENTITY PROTOCOL (ERC-721)</span>
                     <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
-                        <span class="en-text">MINT YOUR DIGITAL IDENTITY</span>
+                        <span class="en-text">MINT YOUR DIGITAL CITIZENSHIP</span>
                         <span class="zh-text">鑄造你的數字公民身份</span>
                     </h2>
-                    <p class="text-dim font-mono text-sm max-w-xl mx-auto">
-                        <span class="en-text">$500 Entry. SBT (Soulbound Token) represents your Digital Citizenship. It permanently carries your wallet, reputation, and career history.</span>
-                        <span class="zh-text">$500 入場。靈魂綁定代幣 (SBT) 代表數字公民身份。它永久承載你的錢包、聲譽和職業履歷。</span>
+                    <p class="text-dim font-mono text-sm max-w-3xl mx-auto leading-relaxed">
+                        <span class="en-text">
+                            In AIF.BOT, you activate not just a mining node, but a "Digital Human" with an independent identity.
+                            This is your native asset in the AI Metaverse, comprised of three core dimensions and evolving with your participation.
+                        </span>
+                        <span class="zh-text">
+                            在 AIF.BOT 網絡中，您激活的不僅僅是一個挖礦節點，而是一個擁有獨立身份的「數字人」。
+                            這是您在 AI 元宇宙中的原生資產，由區塊鏈技術確權。它由三個核心維度構成，並隨着您的參與而不斷進化。
+                        </span>
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-2xl font-heavy text-white mb-4"><span class="en-text">IDENTITY AS SOUL (SBT)</span><span class="zh-text">身份即靈魂 (SBT)</span></h3>
-                            <ul class="space-y-3 font-mono text-sm text-dim">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> <span class="text-white"><span class="en-text">Global Network Access</span><span class="zh-text">獲取全球 AIF 網絡訪問權限</span></span></li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> <span class="text-white"><span class="en-text">Exclusive SBT Minting</span><span class="zh-text">專屬 SBT (靈魂綁定代幣)</span></span></li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> <span class="text-white"><span class="en-text">Instant Gear Calibration</span><span class="zh-text">即時裝備評級與校準</span></span></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-heavy text-white mb-4"><span class="en-text">HARDWARE AS GEAR</span><span class="zh-text">硬件即裝備 (GEAR)</span></h3>
-                            <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono">
-                                <div class="bg-[#111] p-2 border border-[#333]">
-                                    <div class="text-dim mb-1">MOBILE</div>
-                                    <div class="text-white font-bold">NPC</div>
-                                </div>
-                                <div class="bg-[#111] p-2 border border-[#333]">
-                                    <div class="text-dim mb-1">PC</div>
-                                    <div class="text-signal font-bold">ACTOR</div>
-                                </div>
-                                <div class="bg-[#111] p-2 border border-[#333]">
-                                    <div class="text-dim mb-1">WORKSTATION</div>
-                                    <div class="text-accent font-bold">STAR</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-center perspective-1000">
-                        <div class="id-card w-[350px] h-[550px] rounded-xl p-6 flex flex-col justify-between relative">
-                            <div class="scan-line"></div>
-                            <div class="flex justify-between items-start">
-                                <div class="text-2xl font-heavy text-white tracking-widest">AIF.ID</div>
-                                <i class="fa-solid fa-fingerprint text-4xl text-white/20"></i>
-                            </div>
-                            <div class="w-32 h-32 mx-auto border-2 border-dashed border-accent rounded-full flex items-center justify-center relative bg-black/50">
-                                <i class="fa-solid fa-user text-5xl text-white/50"></i>
-                                <div class="absolute -bottom-2 bg-accent text-black text-[10px] font-bold px-2 py-0.5 rounded">LV.1 NOVICE</div>
-                            </div>
-                            <div class="space-y-4 font-mono text-xs">
-                                <div><div class="text-dim uppercase text-[10px]">Digital Name</div><div class="text-white text-lg font-bold border-b border-white/20 pb-1">UNIT-8392</div></div>
-                                <div><div class="text-dim uppercase text-[10px]">Citizenship Type</div><div class="text-signal font-bold">FULL NODE (MINER)</div></div>
-                                <div><div class="text-dim uppercase text-[10px]">Gear (Hardware)</div><div class="text-white">DETECTING...</div></div>
-                                <div><div class="text-dim uppercase text-[10px]">SBT Hash</div><div class="text-accent break-all text-[10px]">0x7a83...b931</div></div>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-end">
-                                <div class="text-[10px] text-white/50">ISSUER<br>AIF.BOT FOUNDATION</div>
-                                <div class="w-12 h-12 bg-white p-1"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=AIF.BOT" class="w-full h-full"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="neural-terminal" class="py-12 bg-void border-b border-[#333] bg-hex-grid">
-            <div class="max-w-[1600px] mx-auto px-6">
-                <div class="flex items-center gap-2 mb-8">
-                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-accent"><span class="en-text">LIVE NODE PREVIEW</span><span class="zh-text">節點運行實時預覽</span></span>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 h-auto lg:h-[700px]">
-                    
-                    <div class="lg:col-span-1 flex flex-col gap-6">
-                        <div class="panel-box p-6 flex-1">
-                            <h3 class="text-dim font-mono text-xs mb-4">// NODE STATUS</h3>
-                            <div class="space-y-6">
-                                <div>
-                                    <div class="text-gray-400 text-xs mb-1">HASHRATE</div>
-                                    <div class="text-3xl font-heavy text-white tracking-widest">450 <span class="text-sm text-dim">MH/s</span></div>
-                                    <div class="w-full bg-[#222] h-1 mt-2"><div class="bg-signal w-[75%] h-full animate-pulse"></div></div>
-                                </div>
-                                <div>
-                                    <div class="text-gray-400 text-xs mb-1">UPTIME</div>
-                                    <div class="text-xl font-heavy text-white">14d 03h 22m</div>
-                                </div>
-                                <div>
-                                    <div class="text-gray-400 text-xs mb-1">REP SCORE</div>
-                                    <div class="text-xl font-heavy text-accent">98.5 / 100</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="panel-box p-6 flex-1 border-signal/50">
-                            <h3 class="text-signal font-mono text-xs mb-2 animate-pulse">// YIELD STREAM</h3>
-                            <div class="text-4xl font-heavy text-white mb-1"><span id="yield-rate">0.0075</span> <span class="text-sm text-dim">AIF/s</span></div>
-                            <div class="text-[10px] text-gray-500 font-mono">Real-time reward accumulation</div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-2 panel-box relative bg-black flex flex-col">
-                        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-screen grayscale"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        
-                        <div class="relative z-10 p-6 flex justify-between">
-                            <div class="font-mono text-[10px] text-accent border border-accent px-2 py-1">UNIT-8821 ONLINE</div>
-                            <div class="font-mono text-[10px] text-dim">HKAIIFF RENDER JOB #9921</div>
-                        </div>
-
-                        <div class="flex-1 flex items-center justify-center relative z-10">
-                            <div class="w-[300px] h-[300px] border border-accent/30 rounded-full flex items-center justify-center animate-pulse-fast">
-                                <i class="fa-solid fa-user-astronaut text-9xl text-white/80 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"></i>
-                            </div>
-                        </div>
-
-                        <div class="h-48 bg-black/80 border-t border-[#333] p-4 font-mono text-[10px] overflow-y-auto" id="terminal-log">
-                            <div class="text-dim">> Connecting to Neural Net...</div>
-                            <div class="text-signal">> Connection Established.</div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-1 panel-box p-6 flex flex-col">
-                        <h3 class="text-dim font-mono text-xs mb-4">// GEAR & SKILLS</h3>
-                        <p class="text-[10px] text-gray-500 mb-4">Drag items to slots to boost yield.</p>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div>
-                                <div class="text-[10px] text-dim mb-1">HEAD (GPU)</div>
-                                <div class="slot" id="slot-head" ondrop="app.drop(event)" ondragover="app.allowDrop(event)" data-slot="head">RTX 4090 (Equipped)</div>
-                            </div>
-                            <div>
-                                <div class="text-[10px] text-dim mb-1">HAND (SKILL)</div>
-                                <div class="slot" id="slot-hand" ondrop="app.drop(event)" ondragover="app.allowDrop(event)" data-slot="hand">EMPTY SLOT</div>
-                            </div>
-                        </div>
-
-                        <h3 class="text-dim font-mono text-xs mb-2">// INVENTORY</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="item-card bg-[#222] p-2 border border-[#444] text-center" draggable="true" ondragstart="app.drag(event)" data-type="hand" data-name="SDXL LORA" data-boost="0.15">
-                                <i class="fa-solid fa-scroll text-accent mb-1"></i>
-                                <div class="text-[10px] text-white">SDXL LoRA</div>
-                                <div class="text-[8px] text-signal">+15% Yield</div>
-                            </div>
-                            <div class="item-card bg-[#222] p-2 border border-[#444] text-center" draggable="true" ondragstart="app.drag(event)" data-type="hand" data-name="KUNG FU DATA" data-boost="0.20">
-                                <i class="fa-solid fa-film text-purple mb-1"></i>
-                                <div class="text-[10px] text-white">Kung Fu Data</div>
-                                <div class="text-[8px] text-signal">+20% Yield</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="journey" class="py-24 bg-void border-b border-[#333]">
-            <div class="max-w-[1400px] mx-auto px-6">
-                <div class="text-center mb-16">
-                    <span class="text-signal font-mono text-xs uppercase tracking-widest block mb-4">// ONBOARDING</span>
-                    <h2 class="text-4xl font-heavy text-white mb-6">
-                        <span class="en-text">YOUR JOURNEY</span><span class="zh-text">你的旅程：從激活到收益</span>
-                    </h2>
-                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-panel border border-[#333] p-8 relative group">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[#333] text-white flex items-center justify-center font-heavy text-xl border border-dim">01</div>
-                        <h3 class="text-xl font-heavy text-white mb-4 mt-2"><span class="en-text">DOWNLOAD CLIENT</span><span class="zh-text">下載客戶端</span></h3>
-                        <p class="text-sm text-dim font-mono mb-6">
-                            <span class="en-text">Get the AIF Terminal for Windows/Mac. It's your portal.</span>
-                            <span class="zh-text">獲取 Windows/Mac 版 AIF 終端。這是你進入 AI 世界的傳送門。</span>
+                    <div class="panel-box p-8 group hover:border-signal transition-all duration-500 relative bg-[#050505]">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-microchip text-6xl text-signal"></i>
+                        </div>
+                        <div class="text-signal font-mono text-xs mb-4">COMPONENT 01</div>
+                        <h3 class="text-2xl font-heavy text-white mb-4"><span class="en-text">BODY: HARDWARE</span><span class="zh-text">肉體：算力硬件</span></h3>
+                        <p class="text-sm text-gray-400 font-mono mb-6 leading-relaxed">
+                            <span class="zh-text">您的實體設備（手機、PC、工作站）構成了數字人的「肉體」。硬件性能決定了基礎算力權重。從閒置的手機到高端 RTX 4090 顯卡，每一份算力都被精確計量。</span>
                         </p>
-                        <div class="flex gap-2">
-                            <button class="flex-1 border border-dim text-dim py-2 text-xs hover:text-white hover:border-white transition-colors"><i class="fa-brands fa-windows mr-1"></i> Windows</button>
-                            <button class="flex-1 border border-dim text-dim py-2 text-xs hover:text-white hover:border-white transition-colors"><i class="fa-brands fa-apple mr-1"></i> macOS</button>
+                        <ul class="text-xs text-dim font-mono space-y-2 border-t border-[#333] pt-4">
+                            <li>• Tier D: <span class="text-white">Mobile / IoT (NPC)</span> - Weight 0.5</li>
+                            <li>• Tier B: <span class="text-white">Gaming PC (Actor)</span> - Weight 3.0</li>
+                            <li>• Tier S: <span class="text-white">Server (Titan)</span> - Weight 50.0</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-box p-8 group hover:border-accent transition-all duration-500 relative bg-[#050505]">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-brain text-6xl text-accent"></i>
+                        </div>
+                        <div class="text-accent font-mono text-xs mb-4">COMPONENT 02</div>
+                        <h3 class="text-2xl font-heavy text-white mb-4"><span class="en-text">SOUL: ALGORITHMS</span><span class="zh-text">靈魂：算法技能</span></h3>
+                        <p class="text-sm text-gray-400 font-mono mb-6 leading-relaxed">
+                            <span class="zh-text">如果硬件是肉體，算法就是靈魂。您可以通過購買或賺取「技能 NFT」來武裝您的數字人。安裝如「科幻渲染」或「多語言翻譯」等技能包，可處理更高價值的特定任務。</span>
+                        </p>
+                        <ul class="text-xs text-dim font-mono space-y-2 border-t border-[#333] pt-4">
+                            <li>• <span class="text-white">SDXL LoRA</span> Pack (+20% Yield)</li>
+                            <li>• <span class="text-white">LLM Logic Core</span> (+15% Yield)</li>
+                            <li>• <span class="text-white">3D Motion Data</span> (+25% Yield)</li>
+                        </ul>
+                    </div>
+
+                    <div class="panel-box p-8 group hover:border-purple transition-all duration-500 relative bg-[#050505]">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-database text-6xl text-purple"></i>
+                        </div>
+                        <div class="text-purple font-mono text-xs mb-4">COMPONENT 03</div>
+                        <h3 class="text-2xl font-heavy text-white mb-4"><span class="en-text">MEMORY: EXPERIENCE</span><span class="zh-text">記憶：數據經驗</span></h3>
+                        <p class="text-sm text-gray-400 font-mono mb-6 leading-relaxed">
+                            <span class="zh-text">每一個完成的任務都會轉化為「經驗值 (EXP)」。隨着等級提升（Lv.1 - Lv.100），您的數字人將解鎖更高的收益權重、優先接單權以及參與 HKAIIFF 核心項目的資格。</span>
+                        </p>
+                        <ul class="text-xs text-dim font-mono space-y-2 border-t border-[#333] pt-4">
+                            <li>• <span class="text-white">Novice (Lv 1-20)</span>: 80% Efficiency</li>
+                            <li>• <span class="text-white">Master (Lv 61-80)</span>: 130% Efficiency</li>
+                            <li>• <span class="text-white">Legend (Lv 81+)</span>: 150% Efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="py-24 bg-void border-b border-[#333] relative">
+            <div class="max-w-[1000px] mx-auto px-6">
+                <h2 class="text-4xl font-heavy text-white mb-12 text-center">
+                    <span class="en-text">YOUR JOURNEY: ACTIVATION TO REVENUE</span>
+                    <span class="zh-text">你的旅程：從激活到收益</span>
+                </h2>
+
+                <div class="relative space-y-0">
+                    <div class="step-item relative pl-12 pb-12">
+                        <div class="step-line"></div>
+                        <div class="absolute left-0 top-0 w-12 h-12 bg-panel border border-signal text-signal flex items-center justify-center font-bold text-xl rounded-full z-10 shadow-[0_0_15px_rgba(204,255,0,0.3)]">01</div>
+                        <div class="bg-panel border border-[#333] p-6 ml-4 relative">
+                            <h3 class="text-xl font-bold text-white mb-2"><span class="zh-text">準備您的算力容器</span></h3>
+                            <p class="text-gray-400 text-sm font-mono leading-relaxed">
+                                <span class="zh-text">準備一台閒置的智能設備。AIF.BOT 客戶端兼容 Windows、macOS、Linux 以及 Android 系統。</span>
+                                <br><span class="text-signal text-xs mt-2 block">建議配置：NVIDIA 顯卡 (PC) 或 Snapdragon 8 Gen 2 以上 (手機) 以獲得最佳收益。</span>
+                            </p>
                         </div>
                     </div>
-                    <div class="bg-panel border border-[#333] p-8 relative group">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[#333] text-white flex items-center justify-center font-heavy text-xl border border-dim">02</div>
-                        <h3 class="text-xl font-heavy text-white mb-4 mt-2"><span class="en-text">GEAR SCAN</span><span class="zh-text">硬件掃描 (GEAR SCAN)</span></h3>
-                        <div class="bg-black p-4 font-mono text-[10px] text-green-500 border border-dim/30">
-                            <div>> SCANNING HARDWARE...</div>
-                            <div class="text-white">> DETECTED: RTX 4090</div>
-                            <div class="text-accent">> RATING: TIER S (TITAN)</div>
-                            <div class="animate-pulse">> MINTING GEAR NFT...</div>
+
+                    <div class="step-item relative pl-12 pb-12">
+                        <div class="step-line"></div>
+                        <div class="absolute left-0 top-0 w-12 h-12 bg-panel border border-accent text-accent flex items-center justify-center font-bold text-xl rounded-full z-10">02</div>
+                        <div class="bg-panel border border-[#333] p-6 ml-4 relative">
+                            <h3 class="text-xl font-bold text-white mb-2"><span class="zh-text">獲取激活授權 (License)</span></h3>
+                            <p class="text-gray-400 text-sm font-mono leading-relaxed">
+                                <span class="zh-text">通過官網支付 <span class="text-white font-bold">500 USDT</span> 獲取終身節點授權。支付成功後，您將通過郵件收到唯一的「激活密鑰」和數字人 NFT 鑄造憑證。這是您進入 AIF 網絡的通行證。</span>
+                            </p>
                         </div>
                     </div>
-                    <div class="bg-panel border border-[#333] p-8 relative group">
-                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-[#333] text-white flex items-center justify-center font-heavy text-xl border border-dim">03</div>
-                        <h3 class="text-xl font-heavy text-white mb-4 mt-2"><span class="en-text">EQUIP & EARN</span><span class="zh-text">裝備與收益</span></h3>
-                        <div class="flex items-center gap-4 bg-[#111] p-3 border border-signal/30">
-                            <div class="w-3 h-3 bg-signal rounded-full animate-pulse"></div>
-                            <div>
-                                <div class="text-xs text-dim font-bold">STATUS: MINING</div>
-                                <div class="text-white font-mono text-sm">3.45 AIF/hr</div>
-                            </div>
+
+                    <div class="step-item relative pl-12 pb-12">
+                        <div class="step-line"></div>
+                        <div class="absolute left-0 top-0 w-12 h-12 bg-panel border border-purple text-purple flex items-center justify-center font-bold text-xl rounded-full z-10">03</div>
+                        <div class="bg-panel border border-[#333] p-6 ml-4 relative">
+                            <h3 class="text-xl font-bold text-white mb-2"><span class="zh-text">部署與鏈接 (Neural Link)</span></h3>
+                            <p class="text-gray-400 text-sm font-mono leading-relaxed">
+                                <span class="zh-text">下載 AIF.BOT 節點客戶端，輸入您的激活密鑰。系統將自動掃描您的硬件配置，生成對應等級的數字人形象，並與區塊鏈網絡建立安全加密通道。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-item relative pl-12">
+                        <div class="step-line"></div>
+                        <div class="absolute left-0 top-0 w-12 h-12 bg-panel border border-white text-white flex items-center justify-center font-bold text-xl rounded-full z-10">04</div>
+                        <div class="bg-panel border border-[#333] p-6 ml-4 relative">
+                            <h3 class="text-xl font-bold text-white mb-2"><span class="zh-text">自動運行與 AIF 收益結算</span></h3>
+                            <p class="text-gray-400 text-sm font-mono leading-relaxed">
+                                <span class="zh-text">保持設備在線。您的數字人將自動接收來自 HKAIIFF（香港 AI 國際電影節）及全球合作夥伴的渲染與推理任務。</span>
+                                <br><span class="text-signal text-xs mt-2 block">收益結算：任務完成後，智能合約將自動發放 <strong>AIF 代幣</strong> 至您的錢包。支持隨時提現。</span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="network" class="py-24 bg-void border-b border-[#333] relative">
-            <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
-            <div class="max-w-[1600px] mx-auto px-6 relative z-10">
+        <section id="ecosystem" class="py-24 bg-panel border-b border-[#333]">
+            <div class="max-w-[1600px] mx-auto px-6">
                 <div class="mb-16">
-                    <span class="text-purple font-mono text-xs uppercase tracking-widest block mb-4">// NETWORK STRUCTURE</span>
+                    <span class="text-purple font-mono text-xs uppercase tracking-widest block mb-4">// THE 3-TIER NETWORK</span>
                     <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
-                        <span class="en-text">TRI-LAYER ARCHITECTURE</span>
+                        <span class="en-text">DISTRIBUTED ARCHITECTURE</span>
                         <span class="zh-text">三層分布式網絡架構</span>
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 border border-[#333]">
                     <div class="p-10 border-b lg:border-b-0 lg:border-r border-[#333] bg-[#050505] hover:bg-[#080808] transition-colors group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-purple text-white text-[10px] px-2 py-1 font-bold">TIER 1</div>
-                        <i class="fa-solid fa-city text-4xl text-purple mb-6 block"></i>
+                        <div class="absolute top-0 right-0 bg-purple text-white text-[10px] px-3 py-1 font-bold font-mono">TIER 1: CITY NODE</div>
+                        <i class="fa-solid fa-city text-5xl text-purple mb-8 block opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         <h3 class="text-3xl font-heavy text-white mb-2"><span class="en-text">GUILD</span><span class="zh-text">城市公會</span></h3>
-                        <div class="text-xs text-purple font-mono mb-6 uppercase">City Node</div>
-                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-purple">
-                            <div class="text-dim text-[10px] uppercase">Activation Cost</div>
-                            <div class="text-2xl font-bold text-white">$50,000 <span class="text-xs font-normal text-dim">NFT</span></div>
+                        <div class="text-sm text-dim font-mono mb-6">The Ecosystem Builder</div>
+                        
+                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-purple space-y-2">
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Activation</span>
+                                <span class="text-white font-bold">$50,000</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Global Cap</span>
+                                <span class="text-white font-bold">1,449 Slots</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Revenue</span>
+                                <span class="text-signal font-bold">5% City Compute</span>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-400 font-mono"><span class="en-text">Earns 3% of ALL compute revenue in the region.</span><span class="zh-text">獲得該城市/區域內所有節點產生算力收益的 3%。</span></p>
+                        <p class="text-sm text-gray-400 font-mono leading-relaxed mb-6">
+                            <span class="zh-text">負責城市級別的生態建設、B 端客戶拓展及合規運營。基於 AIF-CPI 指數在全球 300 個核心城市設立。公會身份為可交易 NFT。</span>
+                        </p>
+                        <button onclick="app.scrollTo('#guild')" class="text-purple text-xs font-bold uppercase tracking-widest hover:text-white transition-colors">Apply Details <i class="fa-solid fa-arrow-right ml-1"></i></button>
                     </div>
+
                     <div class="p-10 border-b lg:border-b-0 lg:border-r border-[#333] bg-[#050505] hover:bg-[#080808] transition-colors group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-accent text-black text-[10px] px-2 py-1 font-bold">TIER 2</div>
-                        <i class="fa-solid fa-user-tie text-4xl text-accent mb-6 block"></i>
+                        <div class="absolute top-0 right-0 bg-accent text-black text-[10px] px-3 py-1 font-bold font-mono">TIER 2: REGIONAL NODE</div>
+                        <i class="fa-solid fa-user-tie text-5xl text-accent mb-8 block opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         <h3 class="text-3xl font-heavy text-white mb-2"><span class="en-text">AGENT</span><span class="zh-text">經紀人</span></h3>
-                        <div class="text-xs text-accent font-mono mb-6 uppercase">Manager Node</div>
-                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-accent">
-                            <div class="text-dim text-[10px] uppercase">Activation Cost</div>
-                            <div class="text-2xl font-bold text-white">$5,000 <span class="text-xs font-normal text-dim">NFT</span></div>
+                        <div class="text-sm text-dim font-mono mb-6">The Node Manager</div>
+
+                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-accent space-y-2">
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Activation</span>
+                                <span class="text-white font-bold">$5,000</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Manage Cap</span>
+                                <span class="text-white font-bold">150 Nodes</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Revenue</span>
+                                <span class="text-signal font-bold">15% Mgmt Fee</span>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-400 font-mono"><span class="en-text">Earns 15% management fee from recruited Digital Humans.</span><span class="zh-text">獲得旗下管理的所有數字人算力收益的 15%。</span></p>
+                        <p class="text-sm text-gray-400 font-mono leading-relaxed mb-6">
+                            <span class="zh-text">負責招募和管理數字人節點。提供技術支持、任務對接及社群運營。是連接公會與個人的橋樑。收益包含激活費分成與算力分成。</span>
+                        </p>
                     </div>
+
                     <div class="p-10 bg-[#050505] hover:bg-[#080808] transition-colors group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-signal text-black text-[10px] px-2 py-1 font-bold">TIER 3</div>
-                        <i class="fa-solid fa-microchip text-4xl text-signal mb-6 block"></i>
+                        <div class="absolute top-0 right-0 bg-signal text-black text-[10px] px-3 py-1 font-bold font-mono">TIER 3: DEVICE NODE</div>
+                        <i class="fa-solid fa-microchip text-5xl text-signal mb-8 block opacity-80 group-hover:opacity-100 transition-opacity"></i>
                         <h3 class="text-3xl font-heavy text-white mb-2"><span class="en-text">DIGITAL HUMAN</span><span class="zh-text">數字人</span></h3>
-                        <div class="text-xs text-signal font-mono mb-6 uppercase">Worker Node</div>
-                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-signal">
-                            <div class="text-dim text-[10px] uppercase">Activation Cost</div>
-                            <div class="text-2xl font-bold text-white">$500 <span class="text-xs font-normal text-dim">SBT</span></div>
+                        <div class="text-sm text-dim font-mono mb-6">The Workforce</div>
+
+                        <div class="bg-[#111] p-4 mb-6 border-l-2 border-signal space-y-2">
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Activation</span>
+                                <span class="text-white font-bold">$500</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Type</span>
+                                <span class="text-white font-bold">Phone / PC</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-dim uppercase">
+                                <span>Revenue</span>
+                                <span class="text-signal font-bold">70% Direct Yield</span>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-400 font-mono"><span class="en-text">The core earner. Keeps 70% direct revenue.</span><span class="zh-text">核心生產者。保留算力任務產生收益的 70%。</span></p>
+                        <p class="text-sm text-gray-400 font-mono leading-relaxed mb-6">
+                            <span class="zh-text">將閒置設備（手機/電腦）轉化為算力節點。安裝插件後全自動運行，無需手動接單。</span>
+                        </p>
+                        <button onclick="app.scrollTo('#activate')" class="text-signal text-xs font-bold uppercase tracking-widest hover:text-white transition-colors">Activate Now <i class="fa-solid fa-arrow-right ml-1"></i></button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="evolution" class="py-24 bg-[#080808] border-b border-[#333]">
-            <div class="max-w-[1600px] mx-auto px-6">
-                <div class="text-center mb-16">
-                    <span class="text-signal font-mono text-xs uppercase tracking-widest block mb-4">// EVOLUTION PROTOCOL</span>
-                    <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
-                        <span class="en-text">HARDWARE & GROWTH</span>
-                        <span class="zh-text">硬件分級與成長邏輯</span>
-                    </h2>
-                </div>
-                <div class="overflow-x-auto mb-20">
-                    <table class="tech-table w-full">
-                        <thead>
-                            <tr>
-                                <th>TIER</th>
-                                <th><span class="en-text">REQUIREMENTS</span><span class="zh-text">硬件要求</span></th>
-                                <th><span class="en-text">ROLE</span><span class="zh-text">角色定義</span></th>
-                                <th><span class="en-text">WEIGHT</span><span class="zh-text">算力權重</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="font-heavy text-dim text-xl">D</td>
-                                <td>Mobile / IoT</td>
-                                <td class="text-dim font-bold">NPC</td>
-                                <td class="text-signal font-mono">0.5x</td>
-                            </tr>
-                            <tr>
-                                <td class="font-heavy text-white text-xl">C</td>
-                                <td>Entry PC</td>
-                                <td class="text-white font-bold">EXTRA (群演)</td>
-                                <td class="text-signal font-mono">1.2x</td>
-                            </tr>
-                            <tr>
-                                <td class="font-heavy text-accent text-xl">B</td>
-                                <td>Gaming PC (RTX 3060+)</td>
-                                <td class="text-accent font-bold">ACTOR (演員)</td>
-                                <td class="text-signal font-mono">3.0x</td>
-                            </tr>
-                            <tr>
-                                <td class="font-heavy text-purple text-xl">A</td>
-                                <td>Workstation (RTX 4090)</td>
-                                <td class="text-purple font-bold">STAR (明星)</td>
-                                <td class="text-signal font-mono">8.0x</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section id="calculator" class="py-24 bg-void border-b border-[#333]">
+        <section id="economics" class="py-24 bg-void border-b border-[#333]">
             <div class="max-w-[1000px] mx-auto px-6">
                 <div class="bg-[#050505] border-2 border-dashed border-[#333] p-8 md:p-12 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 bg-[#333] text-white font-bold px-4 py-1 text-xs uppercase">ESTIMATION TOOL V4</div>
+                    <div class="absolute top-0 left-0 bg-[#333] text-white font-bold px-4 py-1 text-xs uppercase">ESTIMATION TOOL V5</div>
                     <h2 class="text-3xl font-heavy text-white mb-8 mt-4 text-center">
                         <span class="en-text">REVENUE CALCULATOR</span><span class="zh-text">收益估算器</span>
                     </h2>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <label class="text-xs text-dim font-mono block mb-2"><span class="en-text">HARDWARE TIER</span><span class="zh-text">硬件等級</span></label>
-                            <select id="calc-tier" class="w-full bg-panel border border-[#333] text-white p-3 font-mono text-sm focus:border-signal outline-none uppercase" onchange="app.calculate()">
-                                <option value="D">Tier D (Mobile/NPC) - Weight 0.5</option>
-                                <option value="B" selected>Tier B (PC/Actor) - Weight 3.0</option>
-                                <option value="A">Tier A (Workstation/Star) - Weight 8.0</option>
-                            </select>
+                        <div class="space-y-6">
+                            <div>
+                                <label class="text-xs text-dim font-mono block mb-2"><span class="en-text">HARDWARE TIER</span><span class="zh-text">硬件等級 (GEAR)</span></label>
+                                <select id="calc-tier" class="w-full bg-panel border border-[#333] text-white p-3 font-mono text-sm focus:border-signal outline-none uppercase" onchange="app.calculate()">
+                                    <option value="D">Tier D (Mobile / NPC) - Weight 0.5</option>
+                                    <option value="C">Tier C (Entry PC / Extra) - Weight 1.2</option>
+                                    <option value="B" selected>Tier B (Gaming PC / Actor) - Weight 3.0</option>
+                                    <option value="A">Tier A (Workstation / Star) - Weight 8.0</option>
+                                    <option value="S">Tier S (Server / Titan) - Weight 50.0</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="text-xs text-dim font-mono block mb-2"><span class="en-text">DIGITAL HUMAN LEVEL</span><span class="zh-text">數字人等級 (LEVEL)</span></label>
+                                <input type="range" min="1" max="100" value="20" class="w-full h-2 bg-[#333] rounded-lg appearance-none cursor-pointer accent-signal" id="calc-level" oninput="app.calculate(); document.getElementById('level-disp').innerText = 'Lv.' + this.value">
+                                <div class="flex justify-between text-xs text-dim font-mono mt-1">
+                                    <span>Lv.1</span>
+                                    <span id="level-disp" class="text-signal">Lv.20</span>
+                                    <span>Lv.100</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-xs text-dim font-mono block mb-2"><span class="en-text">UPTIME (HOURS/DAY)</span><span class="zh-text">每日在線時長</span></label>
+                                <input type="range" min="4" max="24" value="12" class="w-full h-2 bg-[#333] rounded-lg appearance-none cursor-pointer accent-signal" id="calc-hours" oninput="app.calculate(); document.getElementById('hours-disp').innerText = this.value + 'h'">
+                                <div class="text-right text-xs text-signal font-mono mt-1" id="hours-disp">12h</div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="text-xs text-dim font-mono block mb-2"><span class="en-text">UPTIME</span><span class="zh-text">每日在線</span></label>
-                            <input type="range" min="4" max="24" value="12" class="w-full h-2 bg-[#333] rounded-lg appearance-none cursor-pointer accent-signal mt-3" id="calc-hours" oninput="app.calculate(); document.getElementById('hours-disp').innerText = this.value + 'h'">
-                            <div class="text-right text-xs text-signal font-mono mt-1" id="hours-disp">12h</div>
-                        </div>
-                    </div>
-                    <div class="bg-panel border border-[#333] p-6 text-center relative">
-                        <div class="text-xs text-dim font-mono mb-2"><span class="en-text">ESTIMATED MONTHLY OUTPUT</span><span class="zh-text">預估月產出數量</span></div>
-                        <div class="text-4xl md:text-5xl font-heavy text-white mb-2 tracking-tight">
-                            <span id="calc-min">800</span> - <span id="calc-max">1200</span> <span class="text-sm text-dim align-middle">AIF</span>
+
+                        <div class="bg-panel border border-[#333] p-6 flex flex-col justify-center relative">
+                            <div class="text-center">
+                                <div class="text-xs text-dim font-mono mb-2"><span class="en-text">ESTIMATED MONTHLY REVENUE</span><span class="zh-text">預估月產出 (AIF)</span></div>
+                                <div class="text-5xl font-heavy text-white mb-2 tracking-tight">
+                                    <span id="calc-result">1,250</span> <span class="text-sm text-signal align-middle">AIF</span>
+                                </div>
+                                <div class="text-[10px] text-gray-500 font-mono mt-2">
+                                    <span class="en-text">Based on current network difficulty. 1 AIF ≈ Market Rate.</span>
+                                    <span class="zh-text">基於當前網絡難度。收益以 AIF 代幣結算。</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="activate" class="py-24 bg-panel border-t border-[#333]">
-            <div class="max-w-[1200px] mx-auto px-6">
-                <div class="mb-16 text-center">
-                    <span class="text-signal font-mono text-xs uppercase tracking-widest block mb-4">// DEPLOYMENT TERMINAL</span>
-                    <h2 class="text-4xl font-heavy text-white mb-6">
-                        <span class="en-text">ACTIVATE NODE</span><span class="zh-text">激活節點</span>
-                    </h2>
-                    <p class="text-dim text-sm font-mono">
-                        <span class="en-text">Activation Fee: 500 USDT / Node. Lifetime License.</span>
-                        <span class="zh-text">激活費用：500 USDT / 節點。終身授權。</span>
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-[#050505] border-2 border-[#333] p-8 relative group hover:border-signal transition-colors">
-                        <div class="absolute top-0 right-0 bg-signal text-black text-[10px] px-2 py-1 font-bold font-mono">METHOD A: CRYPTO</div>
-                        <div class="space-y-6 mt-4">
-                            <div>
-                                <div class="flex justify-between text-xs font-mono mb-2 text-dim">
-                                    <span class="text-white"><i class="fa-solid fa-bolt text-purple mr-1"></i> SOLANA (USDT/USDC)</span>
-                                    <span class="text-signal">RECOMMENDED</span>
-                                </div>
-                                <div class="bg-black border border-[#333] p-3 flex justify-between items-center">
-                                    <code class="text-xs text-gray-400 break-all select-all font-mono">3QBgQiHC743ER9beX74bp8K7xrURQR2t5myfcG6tSTLv</code>
-                                    <button class="text-signal hover:text-white ml-2 text-xs uppercase font-bold" onclick="app.copy('3QBgQiHC743ER9beX74bp8K7xrURQR2t5myfcG6tSTLv')">[COPY]</button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-xs font-mono mb-2 text-dim">
-                                    <span class="text-white"><i class="fa-solid fa-cube text-yellow-500 mr-1"></i> BSC (USDT)</span>
-                                </div>
-                                <div class="bg-black border border-[#333] p-3 flex justify-between items-center">
-                                    <code class="text-xs text-gray-400 break-all select-all font-mono">0xc059dc798ec9f31e765d9cccffd2c62b993857c9</code>
-                                    <button class="text-yellow-500 hover:text-white ml-2 text-xs uppercase font-bold" onclick="app.copy('0xc059dc798ec9f31e765d9cccffd2c62b993857c9')">[COPY]</button>
-                                </div>
-                            </div>
+        <section id="guild" class="py-24 bg-panel border-b border-[#333] relative overflow-hidden">
+            <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-purple/10 to-transparent"></div>
+            <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="flex-1">
+                        <span class="text-purple font-mono text-xs uppercase tracking-widest block mb-4">// GLOBAL PARTNER PROGRAM</span>
+                        <h2 class="text-4xl md:text-5xl font-heavy text-white mb-6">
+                            <span class="en-text">BECOME A CITY GUILD</span>
+                            <span class="zh-text">招募：全球城市合夥人</span>
+                        </h2>
+                        <div class="space-y-6 text-gray-400 font-mono text-sm">
+                            <p>
+                                <span class="zh-text">全球僅限 1,449 個席位。公會運營者將獲得該城市內所有算力任務的收益分成。這是 AI 時代的「數字地產」。</span>
+                            </p>
+                            
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple"></i> <span class="text-white">Tier 1 City (e.g., Hong Kong): 20 Slots</span></li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple"></i> <span class="text-white">Tier 2 City (e.g., Shenzhen): 12 Slots</span></li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple"></i> <span class="text-white">Revenue: 5% of City Compute</span></li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-purple"></i> <span class="text-white">Asset: Tradable NFT Identity</span></li>
+                            </ul>
+
+                            <a href="mailto:guild@aif.bot" class="brutal-btn purple mt-6 inline-flex">
+                                <span class="en-text">APPLY FOR GUILD ($50,000)</span><span class="zh-text">申請成為公會 ($50,000)</span>
+                            </a>
                         </div>
                     </div>
-                    <div class="bg-[#050505] border-2 border-[#333] p-8 relative group hover:border-accent transition-colors">
-                        <div class="absolute top-0 right-0 bg-[#333] text-white text-[10px] px-2 py-1 font-mono">METHOD B: FIAT / MANUAL</div>
-                        <h3 class="text-xl font-heavy text-white mb-4"><i class="fa-solid fa-envelope mr-2 text-accent"></i> EMAIL ACTIVATION</h3>
-                        <div class="bg-black border border-accent/30 p-6 text-center mb-6">
-                            <div class="text-xs text-dim mb-1">OFFICIAL EMAIL</div>
-                            <div class="text-xl font-bold text-white select-all">node@aif.bot</div>
+                    <div class="flex-1 flex justify-center">
+                        <div class="w-[350px] h-[500px] bg-[#050505] border border-purple p-6 relative shadow-[0_0_50px_rgba(157,0,255,0.2)]">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-purple"></div>
+                            <div class="flex justify-between items-center mb-8">
+                                <div class="text-purple font-heavy text-2xl">GUILD.NFT</div>
+                                <div class="text-xs font-mono text-dim">ERC-721</div>
+                            </div>
+                            <div class="w-full aspect-square bg-[#111] mb-6 flex items-center justify-center border border-[#222]">
+                                <i class="fa-solid fa-city text-6xl text-purple opacity-80"></i>
+                            </div>
+                            <div class="space-y-3 font-mono text-xs text-dim">
+                                <div class="flex justify-between"><span class="text-white">CITY</span> <span class="text-purple font-bold">HONG KONG</span></div>
+                                <div class="flex justify-between"><span class="text-white">TIER</span> <span>TIER 1 (CPI 1000)</span></div>
+                                <div class="flex justify-between"><span class="text-white">STATUS</span> <span class="text-signal">ACTIVE</span></div>
+                            </div>
                         </div>
-                        <a href="mailto:node@aif.bot?subject=ACTIVATE NODE" class="brutal-btn outline w-full">
-                            <span class="en-text">SEND EMAIL NOW</span><span class="zh-text">立即發送郵件</span>
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-void border-t border-[#333] py-12">
-            <div class="max-w-[1600px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="font-heavy text-2xl text-white mb-4">AIF<span class="text-signal">.BOT</span></div>
-                    <p class="text-dim text-sm font-mono max-w-sm">
-                        <span class="en-text">Every Device, A Value Node in the AI Era.</span>
-                        <span class="zh-text">讓每一部設備，成為 AI 時代的價值節點。</span>
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-heavy mb-4">CONTACT</h4>
-                    <ul class="text-sm text-dim font-mono space-y-2">
-                        <li>hello@aif.bot</li>
-                        <li>node@aif.bot</li>
-                        <li>biz@aif.bot</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-heavy mb-4">SOCIAL</h4>
-                    <div class="flex gap-4 text-dim text-xl">
-                        <a href="#" class="hover:text-signal"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="hover:text-signal"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" class="hover:text-signal"><i class="fa-brands fa-telegram"></i></a>
+        <section id="activate" class="py-24 bg-panel border-t border-[#333] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-signal opacity-5 rounded-full blur-[100px]"></div>
+
+            <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+                <h2 class="text-4xl font-heavy text-white mb-12 text-center">
+                    激活節點 <span class="text-signal text-2xl align-middle ml-2">ACTIVATE NODE</span>
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <div class="border border-[#333] bg-void p-8 flex flex-col justify-between h-full">
+                        <div>
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="text-2xl font-heavy text-white">數字人節點授權</h3>
+                                <span class="bg-signal text-black text-xs font-bold px-2 py-1">LIFETIME LICENSE</span>
+                            </div>
+                            
+                            <div class="text-5xl font-heavy text-white mb-2">500 <span class="text-2xl text-dim">USDT</span></div>
+                            <div class="text-xs text-dim font-mono mb-8">一次性支付，終身有效，無續費。</div>
+
+                            <ul class="space-y-4 text-sm font-mono text-gray-400 mb-8">
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> 包含 1 個標準數字人 NFT</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> 解鎖全球算力任務接單權限</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> 贈送初始基礎技能包 (Lv.1)</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-signal"></i> 享有 HKAIIFF 生態空投權益</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-t border-[#333] pt-6">
+                            <p class="text-xs text-danger font-mono mb-2">注意 / WARNING:</p>
+                            <p class="text-xs text-dim font-mono">
+                                請務必使用去中心化錢包 (Metamask, Phantom, Trust Wallet) 進行轉賬。請勿使用交易所錢包直接轉賬，否則可能導致無法追蹤您的付款。
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="bg-black border-2 border-[#333] p-8 font-mono relative shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                        <div class="absolute top-0 left-0 bg-[#333] text-white text-[10px] px-3 py-1 uppercase">Secure Payment Gateway</div>
+                        
+                        <div class="mt-6 space-y-8">
+                            <div>
+                                <label class="block text-signal text-xs mb-2 font-bold flex justify-between">
+                                    <span>NETWORK: SOLANA (USDT/USDC)</span>
+                                    <span class="text-[10px] text-white bg-signal/20 px-1">RECOMMENDED</span>
+                                </label>
+                                <div class="relative">
+                                    <input type="text" readonly value="3QBgQiHC743ER9beX74bp8K7xrURQR2t5myfcG6tSTLv" 
+                                           class="w-full bg-[#111] border border-[#333] text-gray-300 text-xs p-3 pr-20 focus:border-signal outline-none font-mono">
+                                    <button onclick="app.copyToClipboard('3QBgQiHC743ER9beX74bp8K7xrURQR2t5myfcG6tSTLv')" 
+                                            class="absolute right-1 top-1 bottom-1 bg-[#222] text-white hover:bg-signal hover:text-black px-3 text-xs transition-colors font-bold uppercase">
+                                        COPY
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-accent text-xs mb-2 font-bold">NETWORK: BSC (USDT)</label>
+                                <div class="relative">
+                                    <input type="text" readonly value="0xc059dc798ec9f31e765d9cccffd2c62b993857c9" 
+                                           class="w-full bg-[#111] border border-[#333] text-gray-300 text-xs p-3 pr-20 focus:border-accent outline-none font-mono">
+                                    <button onclick="app.copyToClipboard('0xc059dc798ec9f31e765d9cccffd2c62b993857c9')" 
+                                            class="absolute right-1 top-1 bottom-1 bg-[#222] text-white hover:bg-accent hover:text-black px-3 text-xs transition-colors font-bold uppercase">
+                                        COPY
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-dashed border-[#444] pt-6">
+                                <p class="text-white text-sm mb-4">支付完成後，請發送郵件進行確認：</p>
+                                <div class="bg-[#111] p-4 text-xs text-gray-400 space-y-2">
+                                    <div class="flex"><span class="w-20 text-dim">收件人:</span> <span class="text-white select-all">payment@aif.bot</span></div>
+                                    <div class="flex"><span class="w-20 text-dim">標題:</span> <span class="text-white">節點激活申請 - [您的姓名]</span></div>
+                                    <div class="flex"><span class="w-20 text-dim">內容:</span> <span class="text-white">支付截圖 + 交易哈希 (TXID) + 接收激活碼的郵箱</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="max-w-[1600px] mx-auto px-6 mt-12 pt-8 border-t border-[#222] text-center text-[10px] text-[#444] font-mono">
-                &copy; 2026 AIF.BOT FOUNDATION. ALL RIGHTS RESERVED.
+        </section>
+
+        <footer class="bg-[#050505] border-t border-[#333] py-12 text-xs font-mono">
+            <div class="max-w-[1600px] mx-auto px-6 text-center text-dim">
+                <div class="mb-4 text-white font-heavy text-xl">AIF<span class="text-signal">.BOT</span></div>
+                <p class="mb-8">Every Device, A Value Node in the AI Era.</p>
+                <div>&copy; 2026 AIF.BOT FOUNDATION. ALL RIGHTS RESERVED.</div>
             </div>
         </footer>
 
     </main>
 
+    <div id="sim-modal" class="sim-modal flex flex-col h-full w-full">
+        <div class="h-14 border-b border-[#333] flex items-center justify-between px-6 bg-black z-50">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-terminal text-signal"></i>
+                <span class="font-heavy text-white tracking-widest">NEURAL LINK <span class="text-signal">V2.4.0</span></span>
+            </div>
+            <button onclick="app.closeSimulation()" class="text-dim hover:text-white font-mono text-xs uppercase border border-[#333] px-3 py-1 hover:border-white transition-colors">
+                [ 關閉終端 / CLOSE ]
+            </button>
+        </div>
+
+        <div class="flex-1 p-4 md:p-8 flex flex-col md:flex-row gap-6 overflow-hidden bg-black/90">
+            
+            <div class="w-full md:w-1/3 flex flex-col gap-4 h-full">
+                <div class="bg-panel border border-[#333] flex-1 relative flex flex-col items-center justify-center p-6 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    <div class="absolute top-4 left-4 text-xs font-mono text-dim">
+                        <div>UNIT ID: <span id="sim-id" class="text-white">WAITING...</span></div>
+                        <div>STATUS: <span id="sim-status" class="text-danger font-bold">OFFLINE</span></div>
+                    </div>
+                    
+                    <div class="absolute top-4 right-4 text-xs font-mono text-right text-dim">
+                        <div class="text-[10px]">CURRENT YIELD</div>
+                        <div class="text-2xl text-white font-heavy"><span id="sim-yield">0.0000</span> <span class="text-xs text-signal">AIF/s</span></div>
+                    </div>
+
+                    <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+                        <div id="sim-scanline" class="absolute w-full h-0.5 bg-signal top-0 left-0 hidden animate-scan opacity-50 z-10"></div>
+                        
+                        <div id="sim-avatar" class="hologram-figure text-center transition-all duration-700">
+                            <i class="fa-solid fa-user-astronaut text-[120px] md:text-[180px] text-[#222]" id="sim-avatar-icon"></i>
+                            <div id="sim-msg" class="mt-8 text-xs font-mono text-dim animate-pulse">
+                                等待硬件鏈接...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-6 w-full px-6 grid grid-cols-3 gap-2">
+                        <div class="bg-black/50 border border-[#333] p-2 text-center">
+                            <div class="text-[8px] text-dim mb-1">CORE</div>
+                            <div id="slot-core" class="text-[10px] text-danger font-bold">-</div>
+                        </div>
+                        <div class="bg-black/50 border border-[#333] p-2 text-center">
+                            <div class="text-[8px] text-dim mb-1">GPU</div>
+                            <div id="slot-gpu" class="text-[10px] text-danger font-bold">-</div>
+                        </div>
+                        <div class="bg-black/50 border border-[#333] p-2 text-center">
+                            <div class="text-[8px] text-dim mb-1">SKILL</div>
+                            <div id="slot-skill" class="text-[10px] text-danger font-bold">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-panel border border-[#333] p-6">
+                    <div id="sim-control-inactive">
+                        <p class="text-xs text-dim font-mono mb-4">連接本地設備以激活數字人算力節點。</p>
+                        <button class="w-full bg-signal text-black font-heavy text-lg py-3 hover:bg-white transition-colors uppercase" onclick="simulation.scan()">
+                            <i class="fa-solid fa-power-off mr-2"></i> 鏈接並激活
+                        </button>
+                    </div>
+                    <div id="sim-control-active" class="hidden">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-white font-bold"><i class="fa-solid fa-circle text-signal text-[8px] mr-1 animate-pulse"></i> MINING ACTIVE</span>
+                            <span class="text-[10px] text-signal border border-signal px-1">TIER A</span>
+                        </div>
+                        <div class="w-full bg-[#222] h-1.5 mb-1"><div class="bg-signal h-full w-[85%] animate-pulse"></div></div>
+                        <div class="flex justify-between text-[10px] text-dim font-mono">
+                            <span>Hashrate: 142 MH/s</span>
+                            <span>Temp: 62°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/3 flex flex-col gap-4 h-full">
+                <div class="bg-panel border border-[#333] flex-1 p-6 overflow-hidden flex flex-col">
+                    <div class="mb-4 flex justify-between items-end border-b border-[#333] pb-4">
+                        <div>
+                            <h2 class="text-xl font-heavy text-white">技能市場 <span class="text-dim text-sm ml-2">SKILL MARKET</span></h2>
+                            <p class="text-xs text-dim font-mono">購買並裝載 NFT 技能以提升 AIF 產出效率。</p>
+                        </div>
+                        <div class="text-xs font-mono text-dim">BALANCE: <span id="sim-bal" class="text-white font-bold">1,000</span> AIF</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto pr-2 pb-2">
+                        <div class="border border-[#333] bg-black/40 p-4 hover:border-signal transition-all" id="skill-1">
+                            <div class="flex justify-between mb-2">
+                                <i class="fa-solid fa-video text-purple text-xl"></i>
+                                <div class="text-[10px] text-dim">RENDER</div>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">Cinematic Render</h4>
+                            <div class="text-[10px] text-gray-500 mb-4 h-8">電影級光追渲染算法包。</div>
+                            <div class="text-xs text-signal font-mono mb-2">+0.25 AIF/s</div>
+                            <button class="w-full border border-[#333] text-white py-1 text-xs hover:bg-[#222] transition-colors" onclick="simulation.buy(1, 200, 'Cinematic')">BUY (200 AIF)</button>
+                        </div>
+                        <div class="border border-[#333] bg-black/40 p-4 hover:border-accent transition-all" id="skill-2">
+                            <div class="flex justify-between mb-2">
+                                <i class="fa-solid fa-language text-accent text-xl"></i>
+                                <div class="text-[10px] text-dim">LLM</div>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">Polyglot Matrix</h4>
+                            <div class="text-[10px] text-gray-500 mb-4 h-8">支持 50+ 語言的實時翻譯矩陣。</div>
+                            <div class="text-xs text-signal font-mono mb-2">+0.15 AIF/s</div>
+                            <button class="w-full border border-[#333] text-white py-1 text-xs hover:bg-[#222] transition-colors" onclick="simulation.buy(2, 100, 'Polyglot')">BUY (100 AIF)</button>
+                        </div>
+                        <div class="border border-[#333] bg-black/40 p-4 hover:border-orange-500 transition-all" id="skill-3">
+                            <div class="flex justify-between mb-2">
+                                <i class="fa-solid fa-shield-halved text-orange-500 text-xl"></i>
+                                <div class="text-[10px] text-dim">SECURITY</div>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">Firewall X</h4>
+                            <div class="text-[10px] text-gray-500 mb-4 h-8">企業級節點安全防護協議。</div>
+                            <div class="text-xs text-signal font-mono mb-2">+0.10 AIF/s</div>
+                            <button class="w-full border border-[#333] text-white py-1 text-xs hover:bg-[#222] transition-colors" onclick="simulation.buy(3, 150, 'Firewall')">BUY (150 AIF)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-40 bg-black border border-[#333] p-4 font-mono text-[10px] overflow-hidden flex flex-col">
+                    <div class="text-dim mb-2 border-b border-[#333] pb-1 uppercase">System Log // Real-time Events</div>
+                    <div id="sim-log" class="flex-1 overflow-y-auto space-y-1 text-gray-400">
+                        <div>> SYSTEM READY.</div>
+                        <div>> AWAITING USER ACTIVATION...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const app = {
-            lang: 'zh',
-            baseYield: 0.0075, // Corrected base yield for visual AIF/s logic
-            isInit: false,
-            
             init() {
-                if (this.isInit) return;
-                this.isInit = true;
-
-                this.bootSequence();
+                this.bootAnimation();
                 this.calculate();
-                this.initTerminal();
                 
-                // Failsafe: Ensure boot screen is removed even if animation hangs
-                setTimeout(() => {
-                    const boot = document.getElementById('boot-screen');
-                    if (boot && boot.style.display !== 'none') {
-                        boot.style.display = 'none';
-                    }
-                }, 4000);
+                // Scroll Animations
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.utils.toArray('.step-item').forEach((step, i) => {
+                    gsap.from(step, {
+                        opacity: 0, x: -20, duration: 0.8, delay: i * 0.2,
+                        scrollTrigger: { trigger: '#journey', start: "top 70%" }
+                    });
+                });
+                
+                simulation.startTicker();
             },
 
-            // Boot Animation
-            bootSequence() {
-                // Check if GSAP is loaded
-                if (typeof gsap === 'undefined') {
-                    document.getElementById('boot-screen').style.display = 'none';
-                    return;
-                }
-
+            bootAnimation() {
                 const tl = gsap.timeline();
-                tl.to("#loader-bar", {width: '100%', duration: 1.2, ease: "power2.inOut"})
+                tl.to("#loader-bar", {width: '100%', duration: 1.5, ease: "power2.inOut"})
                   .to("#boot-screen", {opacity: 0, duration: 0.5, delay: 0.2, onComplete: () => {
                       document.getElementById('boot-screen').style.display = 'none';
                   }});
-                
-                gsap.utils.toArray('section').forEach(section => {
-                    gsap.from(section.children, {
-                        y: 30, opacity: 0, duration: 0.8, stagger: 0.1,
-                        scrollTrigger: { trigger: section, start: "top 80%" }
-                    });
-                });
-            },
-
-            // Language Toggle
-            toggleLang() {
-                this.lang = this.lang === 'en' ? 'zh' : 'en';
-                document.body.classList.toggle('lang-en');
-                document.body.classList.toggle('lang-zh');
-                this.calculate();
-            },
-
-            toggleMobileMenu() {
-                const menu = document.getElementById('mobile-menu');
-                menu.classList.toggle('hidden');
-                menu.classList.toggle('flex');
             },
 
             scrollTo(id) {
                 document.querySelector(id).scrollIntoView({behavior: 'smooth'});
             },
 
-            copy(text) {
+            toggleLang() {
+                document.body.classList.toggle('lang-en');
+                document.body.classList.toggle('lang-zh');
+            },
+
+            toggleMobileMenu() {
+                // Simplified toggle for brevity
+                alert("Mobile Menu");
+            },
+
+            copyToClipboard(text) {
                 navigator.clipboard.writeText(text).then(() => {
-                    alert('Wallet Address Copied / 地址已複製');
+                    const toast = document.getElementById('copy-toast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2000);
                 });
             },
 
-            // Revenue Calculator
+            // Revenue Calculator based on Whitepaper weights
             calculate() {
-                const tierEl = document.getElementById('calc-tier');
-                const tierValue = tierEl.value; 
+                const tier = document.getElementById('calc-tier').value;
+                const level = parseInt(document.getElementById('calc-level').value);
                 const hours = parseInt(document.getElementById('calc-hours').value);
                 
+                // Logic based on White Paper
+                // D=0.5, C=1.2, B=3.0, A=8.0, S=50.0
                 const weights = { 'D': 0.5, 'C': 1.2, 'B': 3.0, 'A': 8.0, 'S': 50.0 };
+                const baseRate = 2.0; // Base AIF per unit
+                const levelBonus = 1 + (level * 0.01); // 1% per level
                 
-                // NEW LOGIC: 
-                // Target: $500 investment (Tier B, Weight 3), 5.5 months ROI (~$90/mo).
-                // If 1 AIF ~= $0.10, need ~900 AIF/mo output for Tier B running 12hrs.
-                // Formula: 3.0 (Weight) * 12 (Hours) * X (Base) * 30 (Days) = 900
-                // X = ~0.85 - 0.95 AIF/Hour per Weight Unit.
+                const daily = weights[tier] * baseRate * hours * levelBonus;
+                const monthly = daily * 30;
+
+                // Animate Numbers
+                const el = document.getElementById('calc-result');
+                const start = parseFloat(el.innerText.replace(/,/g, '')) || 0;
+                const end = Math.floor(monthly);
                 
-                const baseRewardPerHour = 0.95; // AIF per hour per weight unit
-                
-                const weight = weights[tierValue];
-                const dailyBase = weight * hours * baseRewardPerHour;
-                const minMonthly = Math.floor(dailyBase * 30 * 0.9);
-                const maxMonthly = Math.floor(dailyBase * 30 * 1.1);
-
-                document.getElementById('calc-min').innerText = minMonthly.toLocaleString();
-                document.getElementById('calc-max').innerText = maxMonthly.toLocaleString();
-            },
-
-            // --- TERMINAL & DRAG DROP LOGIC ---
-            initTerminal() {
-                setTimeout(() => this.log("> Hardware Sync: COMPLETE"), 1000);
-                setTimeout(() => this.log("> Yield Optimization: ACTIVE"), 2000);
-            },
-
-            log(text) {
-                const consoleEl = document.getElementById('terminal-log');
-                if(!consoleEl) return;
-                const div = document.createElement('div');
-                div.innerHTML = text;
-                div.className = "text-signal";
-                consoleEl.appendChild(div);
-                consoleEl.scrollTop = consoleEl.scrollHeight;
-            },
-
-            allowDrop(ev) {
-                ev.preventDefault();
-            },
-
-            drag(ev) {
-                ev.dataTransfer.setData("type", ev.target.dataset.type);
-                ev.dataTransfer.setData("name", ev.target.dataset.name);
-                ev.dataTransfer.setData("boost", ev.target.dataset.boost);
-            },
-
-            drop(ev) {
-                ev.preventDefault();
-                const type = ev.dataTransfer.getData("type");
-                const name = ev.dataTransfer.getData("name");
-                const targetSlot = ev.target.dataset.slot;
-
-                if (type !== targetSlot) return;
-
-                ev.target.classList.add('active');
-                ev.target.className = "slot active text-black font-bold bg-signal border border-signal";
-
-                // Slot Update
-                ev.target.innerHTML = `<span class="text-black">${name.toUpperCase()}</span>`;
-
-                // Yield Update
-                // Boost is now proportionally smaller relative to baseYield to keep realistic numbers
-                this.baseYield += 0.0015; 
-                this.updateYield();
-
-                this.log(`> SKILL MOUNTED: ${name}`);
-                this.log(`> YIELD INCREASED. New Rate: ${this.baseYield.toFixed(4)} AIF/s`);
-            },
-
-            updateYield() {
-                const el = document.getElementById('yield-rate');
-                let start = parseFloat(el.innerText);
-                const end = this.baseYield;
-                const duration = 1000;
-                const startTime = performance.now();
-
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const ease = 1 - Math.pow(1 - progress, 4);
-                    const current = start + (end - start) * ease;
-                    el.innerText = current.toFixed(4);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
+                gsap.to({val: start}, {
+                    val: end,
+                    duration: 0.5,
+                    onUpdate: function() {
+                        el.innerText = Math.floor(this.targets()[0].val).toLocaleString();
                     }
+                });
+            },
+
+            openSimulation() {
+                document.getElementById('sim-modal').classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+                if(!simulation.booted) {
+                    simulation.log("> TERMINAL SESSION STARTED.");
+                    simulation.booted = true;
                 }
-                requestAnimationFrame(update);
+            },
+
+            closeSimulation() {
+                document.getElementById('sim-modal').classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
         };
 
-        // Optimized Initialization Logic
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => app.init());
-        } else {
-            app.init();
-        }
+        const simulation = {
+            active: false,
+            booted: false,
+            balance: 1000,
+            baseYield: 0.0000,
+            
+            log(msg) {
+                const div = document.getElementById('sim-log');
+                const time = new Date().toLocaleTimeString('en-GB');
+                div.innerHTML += `<div><span class="text-dim">[${time}]</span> ${msg}</div>`;
+                div.scrollTop = div.scrollHeight;
+            },
 
-        window.addEventListener('pageshow', (event) => {
-            if (event.persisted) {
-                document.getElementById('boot-screen').style.display = 'none';
+            scan() {
+                if(this.active) return;
+                
+                const btn = document.querySelector('#sim-control-inactive button');
+                btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> SCANNING...`;
+                
+                document.getElementById('sim-scanline').style.display = 'block';
+                this.log("> INITIATING HARDWARE HANDSHAKE...");
+
+                setTimeout(() => {
+                    this.activate();
+                }, 2000);
+            },
+
+            activate() {
+                this.active = true;
+                this.baseYield = 0.0450; // Initial yield
+
+                // UI Updates
+                document.getElementById('sim-id').innerText = "AIF-" + Math.floor(Math.random() * 9000 + 1000);
+                document.getElementById('sim-status').innerText = "ONLINE";
+                document.getElementById('sim-status').className = "text-signal font-bold glitch-text";
+                document.getElementById('sim-control-inactive').classList.add('hidden');
+                document.getElementById('sim-control-active').classList.remove('hidden');
+                document.getElementById('sim-scanline').style.display = 'none';
+
+                // Avatar Change
+                const avatarIcon = document.getElementById('sim-avatar-icon');
+                avatarIcon.className = "fa-solid fa-user-astronaut text-[120px] md:text-[180px] text-signal drop-shadow-[0_0_15px_rgba(204,255,0,0.5)]";
+                document.getElementById('sim-avatar').classList.add('active');
+                document.getElementById('sim-msg').innerHTML = `<span class="text-signal font-bold">SYSTEM ONLINE // EARNING AIF</span>`;
+
+                // Slots
+                document.getElementById('slot-core').innerHTML = `<span class="text-white">INTEL i9</span>`;
+                document.getElementById('slot-gpu').innerHTML = `<span class="text-signal">RTX 4090</span>`;
+                document.getElementById('slot-skill').innerHTML = `<span class="text-dim">EMPTY</span>`;
+
+                this.log("> HARDWARE IDENTIFIED: HIGH-END GPU NODE");
+                this.log("> DIGITAL HUMAN GENERATED SUCCESSFULLY.");
+                this.log(`> MINING STARTED. RATE: ${this.baseYield} AIF/s`);
+                
+                this.updateYieldDisplay();
+            },
+
+            buy(id, cost, name) {
+                if(!this.active) { alert("請先激活節點！(Please activate node first)"); return; }
+                if(this.balance < cost) { alert("餘額不足 (Insufficient AIF)"); return; }
+                
+                this.balance -= cost;
+                document.getElementById('sim-bal').innerText = this.balance;
+                
+                // Disable button
+                const btn = document.querySelector(`#skill-${id} button`);
+                btn.innerText = "INSTALLED";
+                btn.disabled = true;
+                btn.className = "w-full bg-[#222] text-dim py-1 text-xs border border-[#333] cursor-not-allowed";
+                
+                // Visual feedback
+                document.getElementById(`skill-${id}`).classList.add('border-signal', 'bg-signal/5');
+                document.getElementById('slot-skill').innerHTML = `<span class="text-signal">${name.toUpperCase()}</span>`;
+
+                // Boost Yield
+                const boost = (id === 1) ? 0.25 : (id === 2 ? 0.15 : 0.10);
+                this.baseYield += boost;
+                
+                this.log(`> PURCHASED SKILL: [${name}]`);
+                this.log(`> SKILL MOUNTED. EFFICIENCY INCREASED +${boost*100}%`);
+                this.log(`> NEW YIELD RATE: ${this.baseYield.toFixed(4)} AIF/s`);
+            },
+
+            startTicker() {
+                setInterval(() => {
+                    if(this.active) {
+                        this.updateYieldDisplay();
+                    }
+                }, 100);
+            },
+            
+            updateYieldDisplay() {
+                const el = document.getElementById('sim-yield');
+                el.innerText = this.baseYield.toFixed(4);
             }
-        });
+        };
+
+        window.onload = () => app.init();
     </script>
 </body>
 </html>
